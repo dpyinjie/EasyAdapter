@@ -2,7 +2,7 @@ package dpyinjie.adapter.holder;
 
 import android.graphics.Bitmap;
 import android.graphics.drawable.Drawable;
-import android.support.annotation.ColorInt;
+import android.support.annotation.ColorRes;
 import android.support.annotation.DrawableRes;
 import android.support.annotation.IdRes;
 import android.support.annotation.StringRes;
@@ -12,9 +12,8 @@ import android.widget.Checkable;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-/**
- * Created by dpyinjie on 16/5/25.
- */
+import dpyinjie.adapter.common.VisibilityFlavour;
+
 interface HoldAble {
 
     /**
@@ -81,7 +80,7 @@ interface HoldAble {
      * @return
      * @see View#setVisibility(int)
      */
-    HoldAble setVisibility(@IdRes int viewId, int visibility);
+    HoldAble setVisibility(@IdRes int viewId, @VisibilityFlavour int visibility);
 
     /**
      * @param viewId
@@ -97,7 +96,8 @@ interface HoldAble {
      * @return
      * @see View#setBackgroundColor(int)
      */
-    HoldAble setBackgroundColor(@IdRes int viewId, @ColorInt int colorRes);
+    HoldAble setBackgroundColor(@IdRes int viewId, @ColorRes int colorRes);
+
 
     /**
      * @param viewId
@@ -174,6 +174,6 @@ interface HoldAble {
      * @param colorRes
      * @return
      */
-    HoldAble setTextColor(@IdRes int viewId, @ColorInt int colorRes);
+    HoldAble setTextColor(@IdRes int viewId, @ColorRes int colorRes);
 
 }

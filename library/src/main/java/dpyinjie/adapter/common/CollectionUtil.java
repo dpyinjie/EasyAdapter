@@ -1,12 +1,9 @@
-package dpyinjie.adapter;
+package dpyinjie.adapter.common;
 
 import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 
-/**
- * Created by YinJie on 2016/12/9 20:59.
- */
 public class CollectionUtil {
 
     /**

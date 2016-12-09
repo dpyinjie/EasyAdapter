@@ -15,13 +15,13 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
+import dpyinjie.adapter.common.CollectionUtil;
+import dpyinjie.adapter.common.DataFilter;
+import dpyinjie.adapter.common.DataManager;
 import dpyinjie.adapter.holder.ListHolder;
 import dpyinjie.adapter.multitype.ListItemMultiSupport;
 
 
-/**
- * @author Created by YinJie on 2016/12/9 20:51.
- */
 public abstract class BaseListAdapter<D> extends BaseAdapter implements DataManager<D> {
 
     private final Object mLock = new Object();

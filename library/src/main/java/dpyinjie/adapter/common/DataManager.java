@@ -1,4 +1,4 @@
-package dpyinjie.adapter;
+package dpyinjie.adapter.common;
 
 import java.util.Collection;
 import java.util.Comparator;
@@ -6,7 +6,7 @@ import java.util.Comparator;
 /**
  * Created by dpyinjie on 16/5/25.
  */
-interface DataManager<D>  {
+public interface DataManager<D> {
 
     /**
      * 在末尾添加一条数据

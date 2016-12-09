@@ -3,9 +3,6 @@
  */
 package dpyinjie.adapter.multitype;
 
-/**
- * Created by dpyinjie on 16/5/25.
- */
 public interface ExpItemMultiSupport<D> {
 
     /**

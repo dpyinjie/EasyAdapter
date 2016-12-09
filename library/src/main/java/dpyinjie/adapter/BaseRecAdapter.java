@@ -13,14 +13,13 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
+import dpyinjie.adapter.common.CollectionUtil;
+import dpyinjie.adapter.common.DataFilter;
+import dpyinjie.adapter.common.DataManager;
 import dpyinjie.adapter.holder.RecHolder;
 import dpyinjie.adapter.multitype.RecItemMultiSupport;
 
 
-/**
- * Created by dpyinjie on 16/5/25.
- */
-@SuppressWarnings("unused")
 public abstract class BaseRecAdapter<D> extends RecyclerView.Adapter<RecHolder> implements DataManager<D> {
 
     private final Object mLock = new Object();
@@ -30,6 +29,8 @@ public abstract class BaseRecAdapter<D> extends RecyclerView.Adapter<RecHolder> 
     private RecItemMultiSupport<D> mMultiItemSupport;
     private int mItemLayoutId;
     private LayoutInflater mInflater;
+
+    private Context mContext;
 
     /**
      * @param context
@@ -89,6 +90,7 @@ public abstract class BaseRecAdapter<D> extends RecyclerView.Adapter<RecHolder> 
         if (dataSet == null) {
             dataSet = new ArrayList<>();
         }
+        mContext = context;
         mDataSet = dataSet;
         mItemLayoutId = itemViewLayoutId;
         mInflater = LayoutInflater.from(context);
@@ -97,7 +99,7 @@ public abstract class BaseRecAdapter<D> extends RecyclerView.Adapter<RecHolder> 
     @Override
     public RecHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View itemView = mInflater.inflate(mItemLayoutId, parent, false);
-        RecHolder holder = new RecHolder(itemView);
+        RecHolder holder = new RecHolder(mContext, itemView);
         return holder;
     }
 

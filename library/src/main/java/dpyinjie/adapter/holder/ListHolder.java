@@ -15,9 +15,6 @@ import android.widget.Checkable;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-/**
- * Created by dpyinjie on 16/5/25.
- */
 public class ListHolder implements HoldAble {
 
     private View mConvertView;
@@ -30,7 +27,7 @@ public class ListHolder implements HoldAble {
      * @param position
      */
     private ListHolder(Context context, ViewGroup parent, int layoutId, int position) {
-        mViewArray = new SparseArray<View>();
+        mViewArray = new SparseArray<>();
         mConvertView = LayoutInflater.from(context).inflate(layoutId, parent, false);
         mConvertView.setTag(this);
     }

@@ -2,54 +2,31 @@ package dpyinjie.adapter.holder;
 
 
 import android.annotation.SuppressLint;
+import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
-import android.support.annotation.ColorInt;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.RecyclerView;
 import android.util.SparseArray;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.view.View.OnLongClickListener;
 import android.widget.Checkable;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-/**
- * Created by dpyinjie on 16/5/25.
- *
- * @see android.support.v7.widget.RecyclerView.ViewHolder
- */
-public class RecHolder extends RecyclerView.ViewHolder implements HoldAble, OnClickListener, OnLongClickListener {
+public class RecHolder extends RecyclerView.ViewHolder implements HoldAble {
 
+    private Context mContext;
     private View mItemView;
     private SparseArray<View> mViewArray;
-    private OnRecyclerViewItemClickListener mItemClickListener;
-    private OnRecyclerViewItemLongClickListener mItemLongClickListener;
 
-    /**
-     * @param itemView
-     */
-    public RecHolder(View itemView) {
+
+    public RecHolder(Context context, View itemView) {
         super(itemView);
+        mContext = context;
         mItemView = itemView;
-        mViewArray = new SparseArray<View>();
-    }
-
-    /**
-     * @param itemClickListener the recyclerViewItemClickListener to set
-     */
-    public void setOnRecyclerViewItemClickListener(OnRecyclerViewItemClickListener itemClickListener) {
-        this.mItemClickListener = itemClickListener;
-        mItemView.setOnClickListener(this);
-    }
-
-    /**
-     * @param itemLongClickListener
-     */
-    public void setOnRecyclerViewItemLongClickListener(OnRecyclerViewItemLongClickListener itemLongClickListener) {
-        this.mItemLongClickListener = itemLongClickListener;
-        mItemView.setOnLongClickListener(this);
+        mViewArray = new SparseArray<>();
     }
 
     @SuppressWarnings("unchecked")
@@ -94,7 +71,6 @@ public class RecHolder extends RecyclerView.ViewHolder implements HoldAble, OnCl
     @Override
     public RecHolder setImageUri(int viewId, String url) {
 //		TODO 加载图片
-        ImageView imageView = getView(viewId);
         return this;
     }
 
@@ -103,21 +79,6 @@ public class RecHolder extends RecyclerView.ViewHolder implements HoldAble, OnCl
         View view = getView(viewId);
         view.setOnClickListener(clickListener);
         return this;
-    }
-
-    @Override
-    public boolean onLongClick(View view) {
-        if (mItemLongClickListener != null) {
-            mItemLongClickListener.onRecyclerViewItemLongClick(view, getLayoutPosition());
-        }
-        return false;
-    }
-
-    @Override
-    public void onClick(View view) {
-        if (mItemClickListener != null) {
-            mItemClickListener.onRecyclerViewItemClick(view, getLayoutPosition());
-        }
     }
 
     @Override
@@ -146,9 +107,9 @@ public class RecHolder extends RecyclerView.ViewHolder implements HoldAble, OnCl
     }
 
     @Override
-    public HoldAble setBackgroundColor(int viewId, @ColorInt int colorRes) {
+    public HoldAble setBackgroundColor(int viewId, int colorRes) {
         View view = getView(viewId);
-        view.setBackgroundColor(colorRes);
+        view.setBackgroundColor(ContextCompat.getColor(mContext, colorRes));
         return this;
     }
 
@@ -218,34 +179,9 @@ public class RecHolder extends RecyclerView.ViewHolder implements HoldAble, OnCl
     }
 
     @Override
-    public HoldAble setTextColor(int viewId, @ColorInt int colorRes) {
+    public HoldAble setTextColor(int viewId, int colorRes) {
         TextView view = getView(viewId);
-        view.setTextColor(colorRes);
+        view.setTextColor(ContextCompat.getColor(mContext, colorRes));
         return this;
-    }
-
-    /**
-     * �������
-     */
-    public interface OnRecyclerViewItemClickListener {
-
-        /**
-         * @param view
-         * @param position
-         */
-        public void onRecyclerViewItemClick(View view, int position);
-
-    }
-
-    /**
-     * ��������
-     */
-    public interface OnRecyclerViewItemLongClickListener {
-
-        /**
-         * @param view
-         * @param position
-         */
-        public void onRecyclerViewItemLongClick(View view, int position);
     }
 }

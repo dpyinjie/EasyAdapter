@@ -10,9 +10,6 @@ import java.util.List;
 import dpyinjie.adapter.holder.ListHolder;
 
 
-/**
- * Created by dpyinjie on 16/5/25.
- */
 public abstract class BaseArrayAdapter<D> extends ArrayAdapter<D> {
 
     /** */

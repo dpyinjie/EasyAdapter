@@ -17,9 +17,6 @@ import dpyinjie.adapter.multitype.ExpGroupItemMultiSupport;
 import dpyinjie.adapter.multitype.ExpItemMultiSupport;
 
 
-/**
- * Created by dpyinjie on 16/5/25.
- */
 public abstract class BaseExpListAdapter<G, C> extends BaseExpandableListAdapter {
 
     private Context mContext;
