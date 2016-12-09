@@ -4,10 +4,10 @@ ext {
             compileSdkVersion: 24,
             buildToolsVersion: "24.0.0",
             applicationId    : "com.gyjw",
-            minSdkVersion    : 19,
+            minSdkVersion    : 7,
             targetSdkVersion : 21,
-            versionCode      : 9,
-            versionName      : "1.9"
+            versionCode      : 1,
+            versionName      : "1.0"
     ]
 
     lib = [
