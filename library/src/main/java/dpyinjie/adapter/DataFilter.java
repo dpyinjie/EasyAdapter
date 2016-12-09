@@ -4,7 +4,7 @@
 package dpyinjie.adapter;
 
 /**
- * Created by dpyinjie on 16/5/25.
+ * @author Created by YinJie on 2016/12/9 16:58.
  */
 public interface DataFilter<D> {
 

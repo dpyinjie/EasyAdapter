@@ -19,7 +19,7 @@ interface DataManager<D> extends Filterable {
      * @param location
      * @param data
      */
-    public void add(int location, D data);
+    void add(int location, D data);
 
     /**
      * @param collection
@@ -38,10 +38,16 @@ interface DataManager<D> extends Filterable {
     void addAll(D... items);
 
     /**
-     * @param object
-     * @param index
+     * @param location
+     * @param items
      */
-    void insert(D object, int index);
+    void addAll(int location, D... items);
+
+    /**
+     * @param location
+     * @param object
+     */
+    void insert(int location, D object);
 
     /**
      * @param object
@@ -57,6 +63,11 @@ interface DataManager<D> extends Filterable {
      * @param comparator
      */
     void sort(Comparator<D> comparator);
+
+    /**
+     * @return
+     */
+    Collection<D> getDataSet();
 
     /**
      *
@@ -95,7 +106,6 @@ interface DataManager<D> extends Filterable {
      * @param dataSet
      */
     void update(Collection<D> dataSet);
-
 
     /**
      *

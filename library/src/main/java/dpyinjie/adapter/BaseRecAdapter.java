@@ -88,7 +88,7 @@ public abstract class BaseRecAdapter<D> extends RecyclerView.Adapter<RecHolder> 
      */
     private void init(Context context, int itemViewLayoutId, List<D> dataSet) {
         if (dataSet == null) {
-            dataSet = new ArrayList<D>();
+            dataSet = new ArrayList<>();
         }
         mDataSet = dataSet;
         mItemLayoutId = itemViewLayoutId;
@@ -105,7 +105,7 @@ public abstract class BaseRecAdapter<D> extends RecyclerView.Adapter<RecHolder> 
 
     @Override
     public void onBindViewHolder(RecHolder holder, int position) {
-        onBindView(getItemViewType(position), holder, position, getItem(position));
+        onBindViews(getItemViewType(position), holder, position, getItem(position));
     }
 
     /**
@@ -114,7 +114,7 @@ public abstract class BaseRecAdapter<D> extends RecyclerView.Adapter<RecHolder> 
      * @param position
      * @param data
      */
-    public abstract void onBindView(int itemViewType, RecHolder holder, int position, D data);
+    public abstract void onBindViews(int itemViewType, RecHolder holder, int position, D data);
 
 
     @Override
@@ -207,7 +207,7 @@ public abstract class BaseRecAdapter<D> extends RecyclerView.Adapter<RecHolder> 
     }
 
     @Override
-    public void insert(D object, int index) {
+    public void insert(int index, D object) {
         synchronized (mLock) {
             if (mOriginalDatas != null) {
                 mOriginalDatas.add(index, object);
@@ -281,5 +281,4 @@ public abstract class BaseRecAdapter<D> extends RecyclerView.Adapter<RecHolder> 
         return null;
     }
 
-    // Operate Internal DataManager Methods END*****/
 }

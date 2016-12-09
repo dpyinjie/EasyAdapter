@@ -227,13 +227,8 @@ public abstract class BaseListAdapter<D> extends BaseAdapter implements DataMana
             notifyDataSetChanged();
     }
 
-    /**
-     * 向数据集合中指定的序号插入对象
-     *
-     * @param data  The object to insert into the array.
-     * @param index The index at which the object must be inserted.
-     */
-    public void insert(D data, int index) {
+    @Override
+    public void insert(int index, D data) {
         if (data == null) {
             return;
         }
@@ -414,7 +409,7 @@ public abstract class BaseListAdapter<D> extends BaseAdapter implements DataMana
             mResource = mMultiViewTypeSupport.getItemLayoutId(position, getItem(position));
         }
         ListHolder holder = ListHolder.getHolder(mContext, convertView, parent, mResource, position);
-        onBindView(getItemViewType(position), holder, position, getItem(position));
+        onBindViews(getItemViewType(position), holder, position, getItem(position));
         return holder.getConvertView();
     }
 
@@ -433,14 +428,12 @@ public abstract class BaseListAdapter<D> extends BaseAdapter implements DataMana
     }
 
     /**
-     * 把适配器维护的数据转换到布局中显示,实现从数据到显示的过程
-     *
      * @param itemViewType
      * @param holder
      * @param position
      * @param data
      */
-    public abstract void onBindView(int itemViewType, ListHolder holder, int position, D data);
+    public abstract void onBindViews(int itemViewType, ListHolder holder, int position, D data);
 
     @Override
     public Filter getFilter() {

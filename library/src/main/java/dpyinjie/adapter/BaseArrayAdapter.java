@@ -52,8 +52,6 @@ public abstract class BaseArrayAdapter<D> extends ArrayAdapter<D> {
     }
 
     /**
-     * 把适配器维护的数据转换到布局中显示,实现从数据到显示的过程。 子类必须实现此方法来显示数据。
-     *
      * @param holder
      * @param position
      * @param data
