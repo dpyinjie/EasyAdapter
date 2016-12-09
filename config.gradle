@@ -3,7 +3,7 @@ ext {
     cfg = [
             compileSdkVersion: 24,
             buildToolsVersion: "24.0.0",
-            applicationId    : "com.gyjw",
+            applicationId    : "dpyinjie.easyadapter",
             minSdkVersion    : 7,
             targetSdkVersion : 21,
             versionCode      : 1,
