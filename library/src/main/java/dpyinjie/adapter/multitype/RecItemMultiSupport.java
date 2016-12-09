@@ -9,5 +9,5 @@ public interface RecItemMultiSupport<D> {
     int getItemLayoutId(int viewType);
 
 
-    int getItemViewType(D d);
+    int getItemViewType(int position, D d);
 }

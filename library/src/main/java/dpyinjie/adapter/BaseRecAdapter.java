@@ -5,7 +5,6 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Filter;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -15,7 +14,7 @@ import java.util.Comparator;
 import java.util.List;
 
 import dpyinjie.adapter.holder.RecHolder;
-import dpyinjie.adapter.multitype.ListItemMultiSupport;
+import dpyinjie.adapter.multitype.RecItemMultiSupport;
 
 
 /**
@@ -28,7 +27,7 @@ public abstract class BaseRecAdapter<D> extends RecyclerView.Adapter<RecHolder> 
     private List<D> mDataSet;
     private List<D> mOriginalDatas;
     private boolean mNotifyOnChange = true;
-    private ListItemMultiSupport<D> mMultiViewTypeSupport;
+    private RecItemMultiSupport<D> mMultiItemSupport;
     private int mItemLayoutId;
     private LayoutInflater mInflater;
 
@@ -119,101 +118,55 @@ public abstract class BaseRecAdapter<D> extends RecyclerView.Adapter<RecHolder> 
 
     @Override
     public int getItemViewType(int position) {
-        if (mMultiViewTypeSupport != null) {
-            return mMultiViewTypeSupport.getItemViewType(position, mDataSet.get(position));
+        if (mMultiItemSupport != null) {
+            return mMultiItemSupport.getItemViewType(position, mDataSet.get(position));
         }
         return super.getItemViewType(position);
     }
 
     @Override
-    public int getItemCount() {
-        return mDataSet.size();
-    }
-
-    /**
-     * @param position
-     * @return
-     */
-    public D getItem(int position) {
-        return mDataSet.get(position);
-    }
-
-    @Override
-    public int getPosition(D item) {
-        return 0;
-    }
-
-    @Override
-    public void update(Collection<D> dataSet) {
-
-    }
-
-    /**
-     * @return
-     */
-    public List<D> getDateSet() {
-        return mDataSet;
-    }
-
-    // Operate Internal DataManager Methods START*****/
-
-    @Override
-    public void add(D object) {
+    public void add(D data) {
+        if (data == null) {
+            return;
+        }
         synchronized (mLock) {
-            if (mOriginalDatas != null) {
-                mOriginalDatas.add(object);
-            } else {
-                mDataSet.add(object);
-            }
+            mDataSet.add(data);
         }
         if (mNotifyOnChange)
             notifyDataSetChanged();
     }
 
     @Override
-    public void add(int location, D data) {
-
-    }
-
-    @Override
-    public void addAll(Collection<D> collection) {
+    public void add(Collection<D> collection) {
+        if (CollectionUtil.isEmptyOrNull(collection)) {
+            return;
+        }
         synchronized (mLock) {
-            if (mOriginalDatas != null) {
-                mOriginalDatas.addAll(collection);
-            } else {
-                mDataSet.addAll(collection);
-            }
+            mDataSet.addAll(collection);
         }
         if (mNotifyOnChange)
             notifyDataSetChanged();
     }
 
     @Override
-    public void addAll(int location, Collection<D> collection) {
-
-    }
-
-    @Override
-    public void addAll(D... items) {
+    public void add(D... items) {
+        if (CollectionUtil.isEmptyOrNull(items)) {
+            return;
+        }
         synchronized (mLock) {
-            if (mOriginalDatas != null) {
-                Collections.addAll(mOriginalDatas, items);
-            } else {
-                Collections.addAll(mDataSet, items);
-            }
+            Collections.addAll(mDataSet, items);
         }
         if (mNotifyOnChange)
             notifyDataSetChanged();
     }
 
     @Override
-    public void insert(int index, D object) {
+    public void insert(int position, D data) {
+        if (data == null) {
+            return;
+        }
         synchronized (mLock) {
-            if (mOriginalDatas != null) {
-                mOriginalDatas.add(index, object);
-            } else {
-                mDataSet.add(index, object);
-            }
+            mDataSet.add(position, data);
         }
         if (mNotifyOnChange) {
             notifyDataSetChanged();
@@ -221,40 +174,46 @@ public abstract class BaseRecAdapter<D> extends RecyclerView.Adapter<RecHolder> 
     }
 
     @Override
-    public void remove(D object) {
+    public void insert(int position, Collection<D> collection) {
+        if (CollectionUtil.isEmptyOrNull(collection)) {
+            return;
+        }
         synchronized (mLock) {
-            if (mOriginalDatas != null) {
-                mOriginalDatas.remove(object);
-            } else {
-                mDataSet.remove(object);
-            }
+            mDataSet.addAll(position, collection);
         }
         if (mNotifyOnChange)
             notifyDataSetChanged();
     }
 
     @Override
-    public void remove(int location) {
+    public void insert(int position, D... items) {
+        if (CollectionUtil.isEmptyOrNull(items)) {
+            return;
+        }
         synchronized (mLock) {
-            if (mOriginalDatas != null && mOriginalDatas.size() > location) {
-                mOriginalDatas.remove(location);
-            } else {
-                if (mDataSet.size() > location) {
-                    mDataSet.remove(location);
-                }
-            }
+            mDataSet.addAll(position, Arrays.asList(items));
         }
         if (mNotifyOnChange)
             notifyDataSetChanged();
     }
 
     @Override
-    public void clear() {
+    public void remove(D data) {
+        if (data == null) {
+            return;
+        }
         synchronized (mLock) {
-            if (mOriginalDatas != null) {
-                mOriginalDatas.clear();
-            } else {
-                mDataSet.clear();
+            mDataSet.remove(data);
+        }
+        if (mNotifyOnChange)
+            notifyDataSetChanged();
+    }
+
+    @Override
+    public void remove(int position) {
+        synchronized (mLock) {
+            if (mDataSet.size() > position) {
+                mDataSet.remove(position);
             }
         }
         if (mNotifyOnChange)
@@ -263,7 +222,19 @@ public abstract class BaseRecAdapter<D> extends RecyclerView.Adapter<RecHolder> 
 
     @Override
     public void sort(Comparator<D> comparator) {
-        // TODO: 16/8/1
+        if (comparator == null) {
+            return;
+        }
+        synchronized (mLock) {
+            Collections.sort(mDataSet, comparator);
+        }
+        if (mNotifyOnChange)
+            notifyDataSetChanged();
+    }
+
+    @Override
+    public Collection<D> getDataSet() {
+        return mDataSet;
     }
 
     @Override
@@ -273,12 +244,68 @@ public abstract class BaseRecAdapter<D> extends RecyclerView.Adapter<RecHolder> 
 
     @Override
     public int getCount() {
-        return getItemCount();
+        return mDataSet.size();
     }
 
     @Override
-    public Filter getFilter() {
-        return null;
+    public D getItem(int position) {
+        return mDataSet.get(position);
     }
 
+    @Override
+    public int getPosition(D item) {
+        return item == null ? -1 : mDataSet.indexOf(item);
+    }
+
+    @Override
+    public long getItemId(int position) {
+        return position;
+    }
+
+    @Override
+    public void update(Collection<D> dataSet) {
+        if (dataSet == null) {
+            return;
+        }
+        synchronized (mLock) {
+            mDataSet.clear();
+            mDataSet.addAll(dataSet);
+        }
+        if (mNotifyOnChange)
+            notifyDataSetChanged();
+    }
+
+    @Override
+    public void clear() {
+        synchronized (mLock) {
+            mDataSet.clear();
+        }
+        if (mNotifyOnChange)
+            notifyDataSetChanged();
+    }
+
+    @Override
+    public void reverse() {
+        synchronized (mLock) {
+            Collections.reverse(mDataSet);
+        }
+        if (mNotifyOnChange)
+            notifyDataSetChanged();
+    }
+
+    @Override
+    public void filter(DataFilter filter) {
+        ArrayList<D> dataSet = new ArrayList<>(getCount());
+        synchronized (mLock) {
+            for (D d : mDataSet) {
+                if (filter.accept(d)) {
+                    dataSet.add(d);
+                }
+            }
+            //
+            mDataSet = dataSet;
+        }
+        if (mNotifyOnChange)
+            notifyDataSetChanged();
+    }
 }
