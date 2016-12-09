@@ -7,6 +7,7 @@ import android.content.Context;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.Filter;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -23,7 +24,7 @@ import dpyinjie.adapter.multitype.ListItemMultiSupport;
  * Created by dpyinjie on 16/5/25.
  */
 @SuppressWarnings("unused")
-public abstract class BaseListAdapter<D> extends BaseAdapter {
+public abstract class BaseListAdapter<D> extends BaseAdapter implements DataManager<D> {
 
     private final Object mLock = new Object();
     private Context mContext;
@@ -142,11 +143,7 @@ public abstract class BaseListAdapter<D> extends BaseAdapter {
         }
     }
 
-    /**
-     * 添加一个对象到末尾
-     *
-     * @param data
-     */
+    @Override
     public void add(D data) {
         if (data == null) {
             return;
@@ -162,11 +159,7 @@ public abstract class BaseListAdapter<D> extends BaseAdapter {
             notifyDataSetChanged();
     }
 
-    /**
-     * 添加一个对象到指定的位置
-     *
-     * @param data
-     */
+    @Override
     public void add(int location, D data) {
         if (data == null) {
             return;
@@ -182,11 +175,7 @@ public abstract class BaseListAdapter<D> extends BaseAdapter {
             notifyDataSetChanged();
     }
 
-    /**
-     * 添加一个集合到末尾
-     *
-     * @param object
-     */
+    @Override
     public void addAll(Collection<D> object) {
         if (object == null || object.size() == 0) {
             return;
@@ -202,12 +191,7 @@ public abstract class BaseListAdapter<D> extends BaseAdapter {
             notifyDataSetChanged();
     }
 
-    /**
-     * 添加一个集合到指定的位置
-     *
-     * @param location
-     * @param collection
-     */
+    @Override
     public void addAll(int location, Collection<D> collection) {
         if (collection == null || collection.size() == 0) {
             return;
@@ -319,12 +303,8 @@ public abstract class BaseListAdapter<D> extends BaseAdapter {
             notifyDataSetChanged();
     }
 
-    /**
-     * 排序
-     *
-     * @param comparator The comparator used to sort the objects contained in this
-     *                   adapter.
-     */
+
+    @Override
     public void sort(Comparator<D> comparator) {
         synchronized (mLock) {
             if (mOriginalDataSet != null) {
@@ -408,6 +388,11 @@ public abstract class BaseListAdapter<D> extends BaseAdapter {
     }
 
     @Override
+    public void update(Collection<D> dataSet) {
+
+    }
+
+    @Override
     public int getViewTypeCount() {
         if (mMultiViewTypeSupport != null) {
             return mMultiViewTypeSupport.getViewTypeCount();
@@ -456,4 +441,9 @@ public abstract class BaseListAdapter<D> extends BaseAdapter {
      * @param data
      */
     public abstract void onBindView(int itemViewType, ListHolder holder, int position, D data);
+
+    @Override
+    public Filter getFilter() {
+        return null;
+    }
 }

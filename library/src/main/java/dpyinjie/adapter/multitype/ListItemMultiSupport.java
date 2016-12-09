@@ -9,8 +9,6 @@ package dpyinjie.adapter.multitype;
 public interface ListItemMultiSupport<D> {
 
     /**
-     * 获取对应的 Item 数据的布局 ID
-     *
      * @param position
      * @param data
      * @return
@@ -18,16 +16,12 @@ public interface ListItemMultiSupport<D> {
     int getItemLayoutId(int position, D data);
 
     /**
-     * Returns the number of types of Views.
-     *
      * @return
      * @see android.widget.Adapter#getViewTypeCount()
      */
     int getViewTypeCount();
 
     /**
-     * Get the type of View for the specified item.
-     *
      * @param position
      * @param data
      * @return

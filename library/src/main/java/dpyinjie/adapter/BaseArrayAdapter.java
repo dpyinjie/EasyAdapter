@@ -17,6 +17,7 @@ public abstract class BaseArrayAdapter<D> extends ArrayAdapter<D> {
 
     /** */
     protected Context mContext;
+
     /**
      * 适配器Item的布局资源id
      */
@@ -46,7 +47,7 @@ public abstract class BaseArrayAdapter<D> extends ArrayAdapter<D> {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         ListHolder holder = getViewHolder(position, convertView, parent);
-        bindView(holder, position, getItem(position));
+        bindViews(holder, position, getItem(position));
         return holder.getConvertView();
     }
 
@@ -57,7 +58,7 @@ public abstract class BaseArrayAdapter<D> extends ArrayAdapter<D> {
      * @param position
      * @param data
      */
-    public abstract void bindView(ListHolder holder, int position, D data);
+    public abstract void bindViews(ListHolder holder, int position, D data);
 
     /**
      * @param position

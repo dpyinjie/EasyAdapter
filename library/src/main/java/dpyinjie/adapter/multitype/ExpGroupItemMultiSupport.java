@@ -13,17 +13,17 @@ public interface ExpGroupItemMultiSupport<G> {
      * @param data
      * @return
      */
-    public int getGroupLayoutId(int groupPosition, G data);
+     int getGroupLayoutId(int groupPosition, G data);
 
     /**
      * @param groupPosition
      * @return
      */
-    public int getGroupType(int groupPosition);
+     int getGroupType(int groupPosition);
 
     /**
      * @return
      */
-    public int getGroupTypeCount();
+     int getGroupTypeCount();
 
 }

@@ -14,18 +14,18 @@ public interface ExpItemMultiSupport<D> {
      * @param data
      * @return
      */
-    public int getChildLayoutId(int groupPosition, int childPosition, D data);
+    int getChildLayoutId(int groupPosition, int childPosition, D data);
 
     /**
      * @param groupPosition
      * @param childPosition
      * @return
      */
-    public int getChildType(int groupPosition, int childPosition, D data);
+    int getChildType(int groupPosition, int childPosition, D data);
 
     /**
      * @return
      */
-    public int getChildTypeCount();
+    int getChildTypeCount();
 
 }

@@ -8,13 +8,7 @@ package dpyinjie.adapter;
  */
 public interface DataFilter<D> {
 
-    /**
-     * 返回true表示不过滤此条数据
-     *
-     * @param data
-     * @return
-     * @see BaseListAdapter#filter(DataFilter)
-     */
+
     boolean accept(D data);
 
 }

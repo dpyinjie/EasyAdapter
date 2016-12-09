@@ -15,7 +15,7 @@ import android.widget.TextView;
 /**
  * Created by dpyinjie on 16/5/25.
  */
-public interface HoldAble {
+interface HoldAble {
 
     /**
      * @return
@@ -69,8 +69,6 @@ public interface HoldAble {
     HoldAble setImageBitmap(@IdRes int viewId, Bitmap bitmap);
 
     /**
-     * load a image from uri , it can be a network image or a local image.
-     *
      * @param viewId
      * @param uri
      * @return
@@ -79,8 +77,7 @@ public interface HoldAble {
 
     /**
      * @param viewId
-     * @param visibility visibility One of {@link View#VISIBLE}, {@link View#INVISIBLE}
-     *                   , or {@link View#GONE}.
+     * @param visibility visibility One of {@link View#VISIBLE}, {@link View#INVISIBLE}, or {@link View#GONE}.
      * @return
      * @see View#setVisibility(int)
      */

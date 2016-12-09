@@ -16,8 +16,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 /**
- * 通用的 ViewHolder
- * <p/>
  * Created by dpyinjie on 16/5/25.
  */
 public class ListHolder implements HoldAble {

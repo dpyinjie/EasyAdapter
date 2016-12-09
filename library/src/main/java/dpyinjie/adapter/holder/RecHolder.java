@@ -20,8 +20,7 @@ import android.widget.TextView;
  *
  * @see android.support.v7.widget.RecyclerView.ViewHolder
  */
-public class RecHolder extends RecyclerView.ViewHolder
-        implements HoldAble, OnClickListener, OnLongClickListener {
+public class RecHolder extends RecyclerView.ViewHolder implements HoldAble, OnClickListener, OnLongClickListener {
 
     private View mItemView;
     private SparseArray<View> mViewArray;
@@ -119,31 +118,6 @@ public class RecHolder extends RecyclerView.ViewHolder
         if (mItemClickListener != null) {
             mItemClickListener.onRecyclerViewItemClick(view, getLayoutPosition());
         }
-    }
-
-    /**
-     * �������
-     */
-    public interface OnRecyclerViewItemClickListener {
-
-        /**
-         * @param view
-         * @param position
-         */
-        public void onRecyclerViewItemClick(View view, int position);
-
-    }
-
-    /**
-     * ��������
-     */
-    public interface OnRecyclerViewItemLongClickListener {
-
-        /**
-         * @param view
-         * @param position
-         */
-        public void onRecyclerViewItemLongClick(View view, int position);
     }
 
     @Override
@@ -248,5 +222,30 @@ public class RecHolder extends RecyclerView.ViewHolder
         TextView view = getView(viewId);
         view.setTextColor(colorRes);
         return this;
+    }
+
+    /**
+     * �������
+     */
+    public interface OnRecyclerViewItemClickListener {
+
+        /**
+         * @param view
+         * @param position
+         */
+        public void onRecyclerViewItemClick(View view, int position);
+
+    }
+
+    /**
+     * ��������
+     */
+    public interface OnRecyclerViewItemLongClickListener {
+
+        /**
+         * @param view
+         * @param position
+         */
+        public void onRecyclerViewItemLongClick(View view, int position);
     }
 }

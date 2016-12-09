@@ -22,7 +22,7 @@ import dpyinjie.adapter.multitype.ListItemMultiSupport;
  * Created by dpyinjie on 16/5/25.
  */
 @SuppressWarnings("unused")
-public abstract class BaseRecAdapter<D> extends RecyclerView.Adapter<RecHolder> implements DataSet<D> {
+public abstract class BaseRecAdapter<D> extends RecyclerView.Adapter<RecHolder> implements DataManager<D> {
 
     private final Object mLock = new Object();
     private List<D> mDataSet;
@@ -143,6 +143,11 @@ public abstract class BaseRecAdapter<D> extends RecyclerView.Adapter<RecHolder> 
         return 0;
     }
 
+    @Override
+    public void update(Collection<D> dataSet) {
+
+    }
+
     /**
      * @return
      */
@@ -150,7 +155,7 @@ public abstract class BaseRecAdapter<D> extends RecyclerView.Adapter<RecHolder> 
         return mDataSet;
     }
 
-    // Operate Internal DataSet Methods START*****/
+    // Operate Internal DataManager Methods START*****/
 
     @Override
     public void add(D object) {
@@ -166,7 +171,12 @@ public abstract class BaseRecAdapter<D> extends RecyclerView.Adapter<RecHolder> 
     }
 
     @Override
-    public void addAll(Collection<? extends D> collection) {
+    public void add(int location, D data) {
+
+    }
+
+    @Override
+    public void addAll(Collection<D> collection) {
         synchronized (mLock) {
             if (mOriginalDatas != null) {
                 mOriginalDatas.addAll(collection);
@@ -176,6 +186,11 @@ public abstract class BaseRecAdapter<D> extends RecyclerView.Adapter<RecHolder> 
         }
         if (mNotifyOnChange)
             notifyDataSetChanged();
+    }
+
+    @Override
+    public void addAll(int location, Collection<D> collection) {
+
     }
 
     @Override
@@ -247,7 +262,7 @@ public abstract class BaseRecAdapter<D> extends RecyclerView.Adapter<RecHolder> 
     }
 
     @Override
-    public void sort(Comparator<? super D> comparator) {
+    public void sort(Comparator<D> comparator) {
         // TODO: 16/8/1
     }
 
@@ -266,5 +281,5 @@ public abstract class BaseRecAdapter<D> extends RecyclerView.Adapter<RecHolder> 
         return null;
     }
 
-    // Operate Internal DataSet Methods END*****/
+    // Operate Internal DataManager Methods END*****/
 }
