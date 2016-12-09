@@ -14,8 +14,8 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
-import dpyinjie.library.adapter.holder.RecHolder;
-import dpyinjie.library.adapter.multitype.ListItemMultiSupport;
+import dpyinjie.adapter.holder.RecHolder;
+import dpyinjie.adapter.multitype.ListItemMultiSupport;
 
 
 /**

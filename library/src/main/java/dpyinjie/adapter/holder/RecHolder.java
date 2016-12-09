@@ -96,8 +96,6 @@ public class RecHolder extends RecyclerView.ViewHolder
     public RecHolder setImageUri(int viewId, String url) {
 //		TODO 加载图片
         ImageView imageView = getView(viewId);
-        dpyinjie.library.imageloader.ImageLoader
-                .getInstance(imageView.getContext()).display(imageView, url);
         return this;
     }
 

@@ -7,7 +7,7 @@ import android.widget.ArrayAdapter;
 
 import java.util.List;
 
-import dpyinjie.library.adapter.holder.ListHolder;
+import dpyinjie.adapter.holder.ListHolder;
 
 
 /**

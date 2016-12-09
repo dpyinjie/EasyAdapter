@@ -12,9 +12,9 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
-import dpyinjie.library.adapter.holder.ListHolder;
-import dpyinjie.library.adapter.multitype.ExpGroupItemMultiSupport;
-import dpyinjie.library.adapter.multitype.ExpItemMultiSupport;
+import dpyinjie.adapter.holder.ListHolder;
+import dpyinjie.adapter.multitype.ExpGroupItemMultiSupport;
+import dpyinjie.adapter.multitype.ExpItemMultiSupport;
 
 
 /**

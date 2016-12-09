@@ -15,8 +15,8 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
-import dpyinjie.library.adapter.holder.ListHolder;
-import dpyinjie.library.adapter.multitype.ListItemMultiSupport;
+import dpyinjie.adapter.holder.ListHolder;
+import dpyinjie.adapter.multitype.ListItemMultiSupport;
 
 
 /**
