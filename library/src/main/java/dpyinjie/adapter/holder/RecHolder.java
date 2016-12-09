@@ -107,7 +107,7 @@ public class RecHolder extends RecyclerView.ViewHolder implements HoldAble {
     }
 
     @Override
-    public HoldAble setBackgroundColor(int viewId, int colorRes) {
+    public HoldAble setBackgroundColorRes(int viewId, int colorRes) {
         View view = getView(viewId);
         view.setBackgroundColor(ContextCompat.getColor(mContext, colorRes));
         return this;
@@ -170,7 +170,7 @@ public class RecHolder extends RecyclerView.ViewHolder implements HoldAble {
     }
 
     @Override
-    public HoldAble toggle(int viewId) {
+    public HoldAble toggleCheckState(int viewId) {
         View view = getView(viewId);
         if (Checkable.class.isInstance(view)) {
             setChecked(viewId, !isChecked(viewId));
@@ -179,7 +179,7 @@ public class RecHolder extends RecyclerView.ViewHolder implements HoldAble {
     }
 
     @Override
-    public HoldAble setTextColor(int viewId, int colorRes) {
+    public HoldAble setTextColorRes(int viewId, int colorRes) {
         TextView view = getView(viewId);
         view.setTextColor(ContextCompat.getColor(mContext, colorRes));
         return this;

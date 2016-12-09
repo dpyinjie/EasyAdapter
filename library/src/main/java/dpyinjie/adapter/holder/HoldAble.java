@@ -2,6 +2,7 @@ package dpyinjie.adapter.holder;
 
 import android.graphics.Bitmap;
 import android.graphics.drawable.Drawable;
+import android.support.annotation.ColorInt;
 import android.support.annotation.ColorRes;
 import android.support.annotation.DrawableRes;
 import android.support.annotation.IdRes;
@@ -96,7 +97,14 @@ interface HoldAble {
      * @return
      * @see View#setBackgroundColor(int)
      */
-    HoldAble setBackgroundColor(@IdRes int viewId, @ColorRes int colorRes);
+    HoldAble setBackgroundColorRes(@IdRes int viewId, @ColorRes int colorRes);
+
+    /**
+     * @param viewId
+     * @param colorInt
+     * @return
+     */
+    HoldAble setBackgroundColorInt(@IdRes int viewId, @ColorInt int colorInt);
 
 
     /**
@@ -167,13 +175,20 @@ interface HoldAble {
      * @param viewId
      * @see Checkable#toggle()
      */
-    HoldAble toggle(@IdRes int viewId);
+    HoldAble toggleCheckState(@IdRes int viewId);
 
     /**
      * @param viewId
      * @param colorRes
      * @return
      */
-    HoldAble setTextColor(@IdRes int viewId, @ColorRes int colorRes);
+    HoldAble setTextColorRes(@IdRes int viewId, @ColorRes int colorRes);
+
+    /**
+     * @param viewId
+     * @param colorInt
+     * @return
+     */
+    HoldAble setTextColorInt(@IdRes int viewId, @ColorInt int colorInt);
 
 }

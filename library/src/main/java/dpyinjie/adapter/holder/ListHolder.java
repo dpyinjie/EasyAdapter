@@ -6,6 +6,9 @@ import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
+import android.support.annotation.ColorInt;
+import android.support.annotation.IdRes;
+import android.support.v4.content.ContextCompat;
 import android.util.SparseArray;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -17,6 +20,7 @@ import android.widget.TextView;
 
 public class ListHolder implements HoldAble {
 
+    private Context mContext;
     private View mConvertView;
     private SparseArray<View> mViewArray;
 
@@ -27,6 +31,7 @@ public class ListHolder implements HoldAble {
      * @param position
      */
     private ListHolder(Context context, ViewGroup parent, int layoutId, int position) {
+        mContext = context;
         mViewArray = new SparseArray<>();
         mConvertView = LayoutInflater.from(context).inflate(layoutId, parent, false);
         mConvertView.setTag(this);
@@ -123,9 +128,16 @@ public class ListHolder implements HoldAble {
 
     @SuppressWarnings("deprecation")
     @Override
-    public ListHolder setBackgroundColor(int viewId, int colorRes) {
+    public ListHolder setBackgroundColorRes(int viewId, int colorRes) {
         View view = getView(viewId);
-        view.setBackgroundColor(view.getResources().getColor(colorRes));
+        view.setBackgroundColor(ContextCompat.getColor(mContext, colorRes));
+        return this;
+    }
+
+    @Override
+    public HoldAble setBackgroundColorInt(@IdRes int viewId, @ColorInt int colorInt) {
+        View view = getView(viewId);
+        view.setBackgroundColor(colorInt);
         return this;
     }
 
@@ -192,7 +204,7 @@ public class ListHolder implements HoldAble {
     }
 
     @Override
-    public HoldAble toggle(int viewId) {
+    public HoldAble toggleCheckState(int viewId) {
         View view = getView(viewId);
         if (Checkable.class.isInstance(view)) {
             Checkable checkView = (Checkable) view;
@@ -202,9 +214,16 @@ public class ListHolder implements HoldAble {
     }
 
     @Override
-    public HoldAble setTextColor(int viewId, int colorRes) {
+    public HoldAble setTextColorRes(int viewId, int colorRes) {
         TextView view = getView(viewId);
-        view.setTextColor(view.getResources().getColor(colorRes));
+        view.setTextColor(ContextCompat.getColor(mContext, colorRes));
+        return this;
+    }
+
+    @Override
+    public HoldAble setTextColorInt(@IdRes int viewId, @ColorInt int colorInt) {
+        TextView view = getView(viewId);
+        view.setTextColor(colorInt);
         return this;
     }
 
