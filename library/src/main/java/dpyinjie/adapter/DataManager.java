@@ -1,11 +1,8 @@
-package dpyinjie.adapter.common;
+package dpyinjie.adapter;
 
 import java.util.Collection;
 import java.util.Comparator;
 
-/**
- * Created by dpyinjie on 16/5/25.
- */
 public interface DataManager<D> {
 
     /**
@@ -147,6 +144,11 @@ public interface DataManager<D> {
     /**
      * @param filter
      */
-    void filter(DataFilter filter);
+    void filter(Filter filter);
+
+    /**
+     * @return
+     */
+    boolean isEmpty();
 
 }

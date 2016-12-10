@@ -13,9 +13,6 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
-import dpyinjie.adapter.common.CollectionUtil;
-import dpyinjie.adapter.common.DataFilter;
-import dpyinjie.adapter.common.DataManager;
 import dpyinjie.adapter.holder.RecHolder;
 import dpyinjie.adapter.multitype.RecItemMultiSupport;
 
@@ -24,12 +21,10 @@ public abstract class BaseRecAdapter<D> extends RecyclerView.Adapter<RecHolder> 
 
     private final Object mLock = new Object();
     private List<D> mDataSet;
-    private List<D> mOriginalDatas;
     private boolean mNotifyOnChange = true;
     private RecItemMultiSupport<D> mMultiItemSupport;
     private int mItemLayoutId;
     private LayoutInflater mInflater;
-
     private Context mContext;
 
     /**
@@ -96,6 +91,20 @@ public abstract class BaseRecAdapter<D> extends RecyclerView.Adapter<RecHolder> 
         mInflater = LayoutInflater.from(context);
     }
 
+    /**
+     * @return
+     */
+    public RecItemMultiSupport<D> getMultiItemSupport() {
+        return mMultiItemSupport;
+    }
+
+    /**
+     * @param multiItemSupport
+     */
+    public void setMultiItemSupport(RecItemMultiSupport<D> multiItemSupport) {
+        mMultiItemSupport = multiItemSupport;
+    }
+
     @Override
     public RecHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View itemView = mInflater.inflate(mItemLayoutId, parent, false);
@@ -140,7 +149,7 @@ public abstract class BaseRecAdapter<D> extends RecyclerView.Adapter<RecHolder> 
 
     @Override
     public void add(Collection<D> collection) {
-        if (CollectionUtil.isEmptyOrNull(collection)) {
+        if (Utils.isEmptyOrNull(collection)) {
             return;
         }
         synchronized (mLock) {
@@ -152,7 +161,7 @@ public abstract class BaseRecAdapter<D> extends RecyclerView.Adapter<RecHolder> 
 
     @Override
     public void add(D... items) {
-        if (CollectionUtil.isEmptyOrNull(items)) {
+        if (Utils.isEmptyOrNull(items)) {
             return;
         }
         synchronized (mLock) {
@@ -177,7 +186,7 @@ public abstract class BaseRecAdapter<D> extends RecyclerView.Adapter<RecHolder> 
 
     @Override
     public void insert(int position, Collection<D> collection) {
-        if (CollectionUtil.isEmptyOrNull(collection)) {
+        if (Utils.isEmptyOrNull(collection)) {
             return;
         }
         synchronized (mLock) {
@@ -189,7 +198,7 @@ public abstract class BaseRecAdapter<D> extends RecyclerView.Adapter<RecHolder> 
 
     @Override
     public void insert(int position, D... items) {
-        if (CollectionUtil.isEmptyOrNull(items)) {
+        if (Utils.isEmptyOrNull(items)) {
             return;
         }
         synchronized (mLock) {
@@ -296,7 +305,7 @@ public abstract class BaseRecAdapter<D> extends RecyclerView.Adapter<RecHolder> 
     }
 
     @Override
-    public void filter(DataFilter filter) {
+    public void filter(Filter filter) {
         ArrayList<D> dataSet = new ArrayList<>(getCount());
         synchronized (mLock) {
             for (D d : mDataSet) {
@@ -304,10 +313,14 @@ public abstract class BaseRecAdapter<D> extends RecyclerView.Adapter<RecHolder> 
                     dataSet.add(d);
                 }
             }
-            //
             mDataSet = dataSet;
         }
         if (mNotifyOnChange)
             notifyDataSetChanged();
+    }
+
+    @Override
+    public boolean isEmpty() {
+        return mDataSet.isEmpty();
     }
 }

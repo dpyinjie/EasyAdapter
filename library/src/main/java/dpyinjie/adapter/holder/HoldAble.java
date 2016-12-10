@@ -2,18 +2,22 @@ package dpyinjie.adapter.holder;
 
 import android.graphics.Bitmap;
 import android.graphics.drawable.Drawable;
+import android.net.Uri;
 import android.support.annotation.ColorInt;
 import android.support.annotation.ColorRes;
 import android.support.annotation.DrawableRes;
+import android.support.annotation.FloatRange;
 import android.support.annotation.IdRes;
+import android.support.annotation.IntDef;
+import android.support.annotation.Nullable;
 import android.support.annotation.StringRes;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Checkable;
 import android.widget.ImageView;
-import android.widget.TextView;
 
-import dpyinjie.adapter.common.VisibilityFlavour;
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
 
 interface HoldAble {
 
@@ -32,7 +36,6 @@ interface HoldAble {
      * @param viewId
      * @param text
      * @return
-     * @see TextView#setText(CharSequence)
      */
     HoldAble setText(@IdRes int viewId, CharSequence text);
 
@@ -40,7 +43,6 @@ interface HoldAble {
      * @param viewId
      * @param textResId
      * @return
-     * @see TextView#setText(int)
      */
     HoldAble setText(@IdRes int viewId, @StringRes int textResId);
 
@@ -48,15 +50,27 @@ interface HoldAble {
      * @param viewId
      * @param drawableId
      * @return
-     * @see ImageView#setImageResource(int)
      */
     HoldAble setImageResource(@IdRes int viewId, @DrawableRes int drawableId);
 
     /**
      * @param viewId
+     * @param uri
+     * @return
+     */
+    HoldAble setImageURI(@IdRes int viewId, @Nullable Uri uri);
+
+    /**
+     * @param viewId
+     * @param scaleType
+     * @return
+     */
+    HoldAble setScaleType(@IdRes int viewId, ImageView.ScaleType scaleType);
+
+    /**
+     * @param viewId
      * @param drawable
      * @return
-     * @see ImageView#setImageDrawable(Drawable)
      */
     HoldAble setImageDrawable(@IdRes int viewId, Drawable drawable);
 
@@ -64,22 +78,14 @@ interface HoldAble {
      * @param viewId
      * @param bitmap
      * @return
-     * @see ImageView#setImageBitmap(Bitmap)
      */
     HoldAble setImageBitmap(@IdRes int viewId, Bitmap bitmap);
 
-    /**
-     * @param viewId
-     * @param uri
-     * @return
-     */
-    HoldAble setImageUri(@IdRes int viewId, String uri);
 
     /**
      * @param viewId
      * @param visibility visibility One of {@link View#VISIBLE}, {@link View#INVISIBLE}, or {@link View#GONE}.
      * @return
-     * @see View#setVisibility(int)
      */
     HoldAble setVisibility(@IdRes int viewId, @VisibilityFlavour int visibility);
 
@@ -87,7 +93,6 @@ interface HoldAble {
      * @param viewId
      * @param enabled
      * @return
-     * @see View#setEnabled(boolean)
      */
     HoldAble setEnabled(@IdRes int viewId, boolean enabled);
 
@@ -95,7 +100,6 @@ interface HoldAble {
      * @param viewId
      * @param colorRes
      * @return
-     * @see View#setBackgroundColor(int)
      */
     HoldAble setBackgroundColorRes(@IdRes int viewId, @ColorRes int colorRes);
 
@@ -119,7 +123,6 @@ interface HoldAble {
      * @param viewId
      * @param drawable
      * @return
-     * @see View#setBackgroundDrawable(Drawable)
      * @deprecated use {@link #setBackground(int, Drawable)} instead
      */
     @Deprecated
@@ -144,7 +147,6 @@ interface HoldAble {
      * @param viewId
      * @param tag
      * @return
-     * @see View#setTag(Object)
      */
     HoldAble setViewTag(@IdRes int viewId, Object tag);
 
@@ -153,21 +155,18 @@ interface HoldAble {
      * @param key    The key identifying the tag
      * @param tag
      * @return
-     * @see View#setTag(int, Object)
      */
     HoldAble setViewTag(@IdRes int viewId, int key, Object tag);
 
     /**
      * @param viewId
      * @param checked
-     * @see Checkable#setChecked(boolean)
      */
     HoldAble setChecked(@IdRes int viewId, boolean checked);
 
     /**
      * @param viewId
      * @return
-     * @see Checkable#isChecked()
      */
     boolean isChecked(@IdRes int viewId);
 
@@ -191,4 +190,131 @@ interface HoldAble {
      */
     HoldAble setTextColorInt(@IdRes int viewId, @ColorInt int colorInt);
 
+
+    /**
+     * @param viewId
+     * @param spSize
+     * @return
+     */
+    HoldAble setTextSizePx(@IdRes int viewId, float spSize);
+
+    /**
+     * @param viewId
+     * @param left
+     * @param top
+     * @param right
+     * @param bottom
+     * @return
+     */
+    HoldAble setCompoundDrawablesWithIntrinsicBounds(@IdRes int viewId, @DrawableRes int left, @DrawableRes int top, @DrawableRes int right, @DrawableRes int bottom);
+
+    /**
+     * @param viewId
+     * @param pxValue
+     * @return
+     */
+    HoldAble setCompoundDrawablePaddingPx(@IdRes int viewId, int pxValue);
+
+    /**
+     * @param viewId
+     * @param dpValue
+     * @return
+     */
+    HoldAble setCompoundDrawablePaddingDp(@IdRes int viewId, int dpValue);
+
+    /**
+     * @param viewId
+     * @param size
+     * @return
+     */
+    HoldAble setTextSizeSp(@IdRes int viewId, float size);
+
+    /**
+     * @param viewId
+     * @param strResid
+     * @return
+     */
+    HoldAble setHintId(@IdRes int viewId, @StringRes int strResid);
+
+    /**
+     * @param viewId
+     * @param hint
+     * @return
+     */
+    HoldAble setHintStr(@IdRes int viewId, CharSequence hint);
+
+    /**
+     * @param viewId
+     * @param alpha
+     * @return
+     */
+    HoldAble setAlpha(@IdRes int viewId, @FloatRange(from = 0.0, to = 1.0) float alpha);
+
+    /**
+     * @param viewId
+     * @param clickable
+     * @return
+     */
+    HoldAble setClickable(@IdRes int viewId, boolean clickable);
+
+    /**
+     * @param viewId
+     * @param longClickable
+     * @return
+     */
+    HoldAble setLongClickable(@IdRes int viewId, boolean longClickable);
+
+    /**
+     * @param viewId
+     * @param activated
+     * @return
+     */
+    HoldAble setActivated(@IdRes int viewId, boolean activated);
+
+    /**
+     * @param viewId
+     * @param scaleX
+     * @return
+     */
+    HoldAble setScaleX(@IdRes int viewId, float scaleX);
+
+    /**
+     * @param viewId
+     * @param scaleY
+     * @return
+     */
+    HoldAble setScaleY(@IdRes int viewId, float scaleY);
+
+    /**
+     * @param viewId
+     * @param rotation
+     * @return
+     */
+    HoldAble setRotation(@IdRes int viewId, float rotation);
+
+    /**
+     * @param viewId
+     * @param rotationX
+     * @return
+     */
+    HoldAble setRotationX(@IdRes int viewId, float rotationX);
+
+    /**
+     * @param viewId
+     * @param rotationY
+     * @return
+     */
+    HoldAble setRotationY(@IdRes int viewId, float rotationY);
+
+    /**
+     * @param viewId
+     * @param id
+     * @return
+     */
+    HoldAble setId(@IdRes int viewId, @IdRes int id);
+
+    @IntDef({View.VISIBLE, View.INVISIBLE, View.GONE})
+    @Retention(value = RetentionPolicy.SOURCE)
+    @interface VisibilityFlavour {
+    }
 }

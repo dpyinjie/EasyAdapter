@@ -15,9 +15,6 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
-import dpyinjie.adapter.common.CollectionUtil;
-import dpyinjie.adapter.common.DataFilter;
-import dpyinjie.adapter.common.DataManager;
 import dpyinjie.adapter.holder.ListHolder;
 import dpyinjie.adapter.multitype.ListItemMultiSupport;
 
@@ -134,7 +131,7 @@ public abstract class BaseListAdapter<D> extends BaseAdapter implements DataMana
 
     @Override
     public void add(Collection<D> collection) {
-        if (CollectionUtil.isEmptyOrNull(collection)) {
+        if (Utils.isEmptyOrNull(collection)) {
             return;
         }
         synchronized (mLock) {
@@ -146,7 +143,7 @@ public abstract class BaseListAdapter<D> extends BaseAdapter implements DataMana
 
     @Override
     public void add(D... items) {
-        if (CollectionUtil.isEmptyOrNull(items)) {
+        if (Utils.isEmptyOrNull(items)) {
             return;
         }
         synchronized (mLock) {
@@ -171,7 +168,7 @@ public abstract class BaseListAdapter<D> extends BaseAdapter implements DataMana
 
     @Override
     public void insert(int position, Collection<D> collection) {
-        if (CollectionUtil.isEmptyOrNull(collection)) {
+        if (Utils.isEmptyOrNull(collection)) {
             return;
         }
         synchronized (mLock) {
@@ -183,7 +180,7 @@ public abstract class BaseListAdapter<D> extends BaseAdapter implements DataMana
 
     @Override
     public void insert(int position, D... items) {
-        if (CollectionUtil.isEmptyOrNull(items)) {
+        if (Utils.isEmptyOrNull(items)) {
             return;
         }
         synchronized (mLock) {
@@ -290,7 +287,7 @@ public abstract class BaseListAdapter<D> extends BaseAdapter implements DataMana
     }
 
     @Override
-    public void filter(DataFilter filter) {
+    public void filter(Filter filter) {
         ArrayList<D> dataSet = new ArrayList<>(getCount());
         synchronized (mLock) {
             for (D d : mDataSet) {
@@ -303,5 +300,10 @@ public abstract class BaseListAdapter<D> extends BaseAdapter implements DataMana
         }
         if (mNotifyOnChange)
             notifyDataSetChanged();
+    }
+
+    @Override
+    public boolean isEmpty() {
+        return mDataSet.isEmpty();
     }
 }
