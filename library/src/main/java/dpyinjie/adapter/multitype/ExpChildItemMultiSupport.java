@@ -3,7 +3,7 @@
  */
 package dpyinjie.adapter.multitype;
 
-public interface ExpItemMultiSupport<D> {
+public interface ExpChildItemMultiSupport<D> {
 
     /**
      * @param groupPosition

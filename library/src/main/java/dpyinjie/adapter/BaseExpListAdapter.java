@@ -14,7 +14,7 @@ import java.util.List;
 
 import dpyinjie.adapter.holder.ListHolder;
 import dpyinjie.adapter.multitype.ExpGroupItemMultiSupport;
-import dpyinjie.adapter.multitype.ExpItemMultiSupport;
+import dpyinjie.adapter.multitype.ExpChildItemMultiSupport;
 
 
 public abstract class BaseExpListAdapter<G, C> extends BaseExpandableListAdapter {
@@ -30,7 +30,7 @@ public abstract class BaseExpListAdapter<G, C> extends BaseExpandableListAdapter
     private boolean mRemoveGroupWhenChildIsEmpty = true;
     private final Object mLock = new Object();
     private ExpGroupItemMultiSupport<G> mGroupItemMultiTypeSupport;
-    private ExpItemMultiSupport<C> mChildItemMultiTypeSupport;
+    private ExpChildItemMultiSupport<C> mChildItemMultiTypeSupport;
 
     /**
      * @param context
@@ -125,7 +125,7 @@ public abstract class BaseExpListAdapter<G, C> extends BaseExpandableListAdapter
     /**
      * @param childItemMultiTypeSupport the mChildMultiTypeSupport to set
      */
-    public void setChildItemMultiTypeSupport(ExpItemMultiSupport<C> childItemMultiTypeSupport) {
+    public void setChildItemMultiTypeSupport(ExpChildItemMultiSupport<C> childItemMultiTypeSupport) {
         this.mChildItemMultiTypeSupport = childItemMultiTypeSupport;
     }
 

@@ -107,6 +107,9 @@ public abstract class BaseRecAdapter<D> extends RecyclerView.Adapter<RecHolder> 
 
     @Override
     public RecHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        if (mMultiItemSupport != null) {
+            mItemLayoutId = mMultiItemSupport.getItemLayoutId(viewType);
+        }
         View itemView = mInflater.inflate(mItemLayoutId, parent, false);
         RecHolder holder = new RecHolder(mContext, itemView);
         return holder;
