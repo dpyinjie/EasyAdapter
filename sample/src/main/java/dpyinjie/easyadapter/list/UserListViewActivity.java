@@ -39,6 +39,7 @@ public class UserListViewActivity extends AppCompatActivity {
     }
 
     private void init() {
+
         mAdapter = new UserListAdapter(this);
         mLvUser.setAdapter(mAdapter);
 

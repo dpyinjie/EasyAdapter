@@ -21,5 +21,6 @@ public class UserRecAdapter extends BaseRecAdapter<User> {
     public void onBindViews(int itemViewType, RecHolder holder, int position, User user) {
         holder.setText(R.id.tv_name, user.getName());
         holder.setText(R.id.tv_age, "年龄： " + user.getAge());
+
     }
 }
