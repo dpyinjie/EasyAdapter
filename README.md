@@ -1,4 +1,4 @@
-[![](https://jitpack.io/v/dpyinjie/EasyAdapter.svg)](https://jitpack.io/#dpyinjie/EasyAdapter)
+[![](https://jitpack.io/v/dpyinjie/easy-adapter.svg)](https://jitpack.io/#dpyinjie/easy-adapter)
 
 # EasyAdapter
 简化 Android 适配器编程库, 包含 ListView 和 RecyclerView.
