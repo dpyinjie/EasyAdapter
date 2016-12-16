@@ -5,9 +5,9 @@ apply plugin: 'com.github.dcendents.android-maven'
 group='com.github.dpyinjie'
 
 android {
+
     compileSdkVersion cfg.compileSdkVersion
     buildToolsVersion cfg.buildToolsVersion
-
 
     defaultConfig {
         minSdkVersion cfg.minSdkVersion
