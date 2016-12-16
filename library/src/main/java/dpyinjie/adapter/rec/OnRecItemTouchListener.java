@@ -62,7 +62,6 @@ public class OnRecItemTouchListener implements RecyclerView.OnItemTouchListener 
                 if (adapterPosition != RecyclerView.NO_POSITION) {
                     onItemClick(holder, adapterPosition, recyclerView.getChildLayoutPosition(child));
                 }
-
             }
             return true;
         }

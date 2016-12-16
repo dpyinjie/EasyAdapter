@@ -6,12 +6,12 @@ group='com.github.dpyinjie'
 
 android {
 
-    compileSdkVersion cfg.compileSdkVersion
-    buildToolsVersion cfg.buildToolsVersion
+    compileSdkVersion 24
+    buildToolsVersion "24.0.0"
 
     defaultConfig {
-        minSdkVersion cfg.minSdkVersion
-        targetSdkVersion cfg.targetSdkVersion
+        minSdkVersion 8
+        targetSdkVersion 21
     }
 
     buildTypes {
@@ -23,5 +23,5 @@ android {
 }
 
 dependencies {
-    compile lib["support-recyclerview-v7"]
+    compile 'com.android.support:recyclerview-v7:24.0.0'
 }

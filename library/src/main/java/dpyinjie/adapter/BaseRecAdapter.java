@@ -257,6 +257,11 @@ public abstract class BaseRecAdapter<D> extends RecyclerView.Adapter<RecHolder> 
     }
 
     @Override
+    public int getItemCount() {
+        return getCount();
+    }
+
+    @Override
     public int getCount() {
         return mDataSet.size();
     }

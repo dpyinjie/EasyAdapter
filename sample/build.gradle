@@ -1,17 +1,15 @@
 apply plugin: 'com.android.application'
 
-def cfg = rootProject.ext.cfg
-def lib = rootProject.ext.lib
 
 android {
-    compileSdkVersion cfg.compileSdkVersion
-    buildToolsVersion cfg.buildToolsVersion
+    compileSdkVersion 24
+    buildToolsVersion "24.0.0"
     defaultConfig {
         applicationId "dpyinjie.easyadapter.sample"
-        minSdkVersion cfg.minSdkVersion
-        targetSdkVersion cfg.targetSdkVersion
-        versionCode cfg.versionCode
-        versionName cfg.versionName
+        minSdkVersion 15
+        targetSdkVersion 21
+        versionCode 1
+        versionName '1.0.0'
     }
     buildTypes {
         release {
@@ -22,8 +20,10 @@ android {
 }
 
 dependencies {
+    compile project(':library')
     compile fileTree(include: ['*.jar'], dir: 'libs')
-    compile lib["library"]
-    compile lib["junit"]
-    compile lib["appcompat-v7"]
+    compile 'junit:junit:4.12'
+    compile 'com.android.support:appcompat-v7:24.0.0'
+    compile 'com.jakewharton:butterknife:8.4.0'
+    annotationProcessor 'com.jakewharton:butterknife-compiler:8.4.0'
 }
