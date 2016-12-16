@@ -9,7 +9,7 @@
 
 ### 单种 Item 视图
 
-1. 	 适配器类继承 `dpyinjie.adapter.BaseListAdapter<D>` , 实现抽象方法，泛型<D>表示你的适配器所绑定的数据类型。
+1. 适配器类继承 `dpyinjie.adapter.BaseListAdapter<D>` , 实现抽象方法，泛型<D>表示你的适配器所绑定的数据类型。
 2. 给你的 ListView 直接设置适配器即可。
 3. 数据集变化可通过适配器的一系列方法触发更新 UI。
 
@@ -42,7 +42,6 @@ public class UserListAdapter extends BaseListAdapter<User> {
 
 ```
 public class UserRecAdapter extends BaseRecAdapter<User> {
-
 
     public UserRecAdapter(Context context) {
         super(context, R.layout.item_user_info);
