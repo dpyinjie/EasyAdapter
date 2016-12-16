@@ -75,4 +75,4 @@ public class UserRecAdapter extends BaseRecAdapter<User> {
  
 2. 在 Module Level 的 build.gradle 中添加   
 
-	`compile 'com.github.dpyinjie:EasyAdapter:0.1.1'`
+	`compile 'com.github.dpyinjie:EasyAdapter:0.1.4'`
