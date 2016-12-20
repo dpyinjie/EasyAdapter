@@ -42,7 +42,7 @@
  
 2. 在 Module Level 的 build.gradle 中添加   
 
-	`compile 'com.github.dpyinjie:EasyAdapter:1.0.0'`
+	`compile 'com.github.dpyinjie:easy-adapter:1.0.0'`
 
 ## ListView 代码示例
 
