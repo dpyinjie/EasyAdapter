@@ -8,6 +8,25 @@
 
 个人能力有限, 在使用的过程中如果遇到 Bug , 欢迎提交 Issue。
 
+## Usage
+
+1. 在 Project Level 的 build.gradle 中添加   
+
+	```
+	...
+	allprojects {
+    repositories {
+        maven { url "https://jitpack.io" }//添加此行代码
+    }
+} 
+...
+
+	```  
+ 
+2. 在 Module Level 的 build.gradle 中添加   
+
+	`compile 'com.github.dpyinjie:EasyAdapter:1.0.0'`
+
 ## ListView 代码示例
 
 ### 单种 Item 视图
@@ -209,22 +228,3 @@ public class MultiUserRecAdapter extends BaseRecAdapter<User> {
 }
 
 ```
-
-## Usage
-
-1. 在 Project Level 的 build.gradle 中添加   
-
-	```
-	...
-	allprojects {
-    repositories {
-        maven { url "https://jitpack.io" }//添加此行代码
-    }
-} 
-...
-
-	```  
- 
-2. 在 Module Level 的 build.gradle 中添加   
-
-	`compile 'com.github.dpyinjie:EasyAdapter:1.0.0'`
