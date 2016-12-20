@@ -4,11 +4,7 @@
 
 [示例 APK 下载](http://fir.im/9whv)
 
-简化 Android 适配器编程库,内部都使用了 ViewHolder 模式。 包含 ListView 和 RecyclerView.
-
-个人能力有限, 在使用的过程中如果遇到 Bug , 欢迎提交 Issue。
-
-## 效果图
+简化 Android 适配器编程库,内部都使用了 ViewHolder 模式。 包含 ListView , GridView , RecyclerView.
 
 ### ListView
 
@@ -44,9 +40,9 @@
 
 	`compile 'com.github.dpyinjie:easy-adapter:1.0.0'`
 
-## ListView 代码示例
+## ListView Sample
 
-### 单种 Item 视图
+### Single Item
 
 1. 	适配器类继承 `dpyinjie.adapter.BaseListAdapter<D>` , 实现抽象方法，泛型<D>表示你的适配器所绑定的数据类型。
 2. 给你的 ListView 直接设置适配器即可。
@@ -71,7 +67,7 @@ public class UserListAdapter extends BaseListAdapter<User> {
 }
 ```
 
-### 多种 Item 视图
+### Multi Item
 
 1. 适配器类继承 `dpyinjie.adapter.BaseListAdapter<D>` , 实现抽象方法，泛型<D>表示你的适配器所绑定的数据类型。
 2. 新建类实现接口 `ListMultiItemSupport<D>` 
@@ -150,9 +146,9 @@ public class MultiUserListAdapter extends BaseListAdapter<User> {
 
 ```
 
-## RecyclerView 代码示例
+## RecyclerView Sample
 
-### 单种 Item 视图
+### Single Item
 
 让你的适配器继承 `BaseRecAdapter<D>`， 其它和 ListView 使用方法相同。
 
@@ -172,7 +168,7 @@ public class UserRecAdapter extends BaseRecAdapter<User> {
     }
 ```   
 
-### 多种 Item 视图
+### Multi Item
 
 1. 适配器类继承 `BaseRecAdapter<D>`
 2. 新建类实现接口 `RecMultiItemSupport<D>` 
@@ -245,3 +241,9 @@ public class MultiUserRecAdapter extends BaseRecAdapter<User> {
 }
 
 ```
+
+## Thanks
+
+[hongyangAndroid/baseAdapter](https://github.com/hongyangAndroid/baseAdapter)
+
+[JoanZapata/base-adapter-helper](https://github.com/JoanZapata/base-adapter-helper)
