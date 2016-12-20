@@ -8,6 +8,23 @@
 
 个人能力有限, 在使用的过程中如果遇到 Bug , 欢迎提交 Issue。
 
+## 效果图
+
+### ListView
+
+**注：不同的颜色代表不同的 ItemType**
+
+![ListView single Item](https://raw.githubusercontent.com/dpyinjie/easy-adapter/master/raw/list_single_item.png)
+![ListView Multi Item](https://raw.githubusercontent.com/dpyinjie/easy-adapter/master/raw/list_multi_item.png)
+
+### RecyclerView
+
+**注：不同的颜色代表不同的 ItemType**
+
+![RecyclerView single Item](https://raw.githubusercontent.com/dpyinjie/easy-adapter/master/raw/rec_single_item.png)
+![RecyclerView single Item](https://raw.githubusercontent.com/dpyinjie/easy-adapter/master/raw/rec_multi_item.png)
+
+
 ## Usage
 
 1. 在 Project Level 的 build.gradle 中添加   
