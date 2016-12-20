@@ -16,6 +16,8 @@
         android:layout_height="?attr/actionBarSize"
         android:background="@color/colorPrimary"
         app:navigationIcon="@drawable/ic_arrow_back_white_24dp"
+        app:subtitle="点击菜单切换 single/multi Item"
+        app:subtitleTextColor="#eae1e1"
         app:title="RecyclerView Sample"
         app:titleTextColor="#eae1e1"/>
 
@@ -23,9 +25,7 @@
         android:id="@+id/rv_user"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        tools:listitem="@layout/item_user_info"/>
+        android:overScrollMode="never"
+        tools:listitem="@layout/item_user_type_1_info"/>
 
 </LinearLayout>

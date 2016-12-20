@@ -3,14 +3,13 @@
  */
 package dpyinjie.adapter.multitype;
 
-public interface ListItemMultiSupport<D> {
+public interface ListMultiItemSupport<D> {
 
     /**
-     * @param position
-     * @param data
+     * @param viewType
      * @return
      */
-    int getItemLayoutId(int position, D data);
+    int getItemLayoutId(int viewType);
 
     /**
      * @return

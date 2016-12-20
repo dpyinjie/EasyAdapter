@@ -4,7 +4,6 @@
               android:layout_width="match_parent"
               android:layout_height="wrap_content"
               android:background="@drawable/selector_item_touch"
-              android:clickable="true"
               android:orientation="vertical"
               android:padding="10dp">
 
@@ -13,6 +12,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="TextView"
+        android:textColor="#f10404"
         android:textSize="20sp"
         tools:text="名字"/>
 
@@ -22,5 +22,6 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:text="TextView"
+        android:textColor="#f10404"
         tools:text="19"/>
 </LinearLayout>

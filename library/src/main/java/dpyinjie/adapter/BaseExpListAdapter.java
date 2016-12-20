@@ -13,8 +13,8 @@ import java.util.LinkedList;
 import java.util.List;
 
 import dpyinjie.adapter.holder.ListHolder;
-import dpyinjie.adapter.multitype.ExpGroupItemMultiSupport;
-import dpyinjie.adapter.multitype.ExpChildItemMultiSupport;
+import dpyinjie.adapter.multitype.ExpGroupMultiItemSupport;
+import dpyinjie.adapter.multitype.ExpChildMultiItemSupport;
 
 
 public abstract class BaseExpListAdapter<G, C> extends BaseExpandableListAdapter {
@@ -29,8 +29,8 @@ public abstract class BaseExpListAdapter<G, C> extends BaseExpandableListAdapter
     // 在移除一条Child数据的时候如果当前Group没有Child数据的时候是否移除当前的Group
     private boolean mRemoveGroupWhenChildIsEmpty = true;
     private final Object mLock = new Object();
-    private ExpGroupItemMultiSupport<G> mGroupItemMultiTypeSupport;
-    private ExpChildItemMultiSupport<C> mChildItemMultiTypeSupport;
+    private ExpGroupMultiItemSupport<G> mGroupItemMultiTypeSupport;
+    private ExpChildMultiItemSupport<C> mChildItemMultiTypeSupport;
 
     /**
      * @param context
@@ -118,14 +118,14 @@ public abstract class BaseExpListAdapter<G, C> extends BaseExpandableListAdapter
     /**
      * @param groupItemMultiTypeSupport the mMultiExpandableItemTypeSupport to set
      */
-    public void setGroupItemMultiTypeSupport(ExpGroupItemMultiSupport<G> groupItemMultiTypeSupport) {
+    public void setGroupItemMultiTypeSupport(ExpGroupMultiItemSupport<G> groupItemMultiTypeSupport) {
         mGroupItemMultiTypeSupport = groupItemMultiTypeSupport;
     }
 
     /**
      * @param childItemMultiTypeSupport the mChildMultiTypeSupport to set
      */
-    public void setChildItemMultiTypeSupport(ExpChildItemMultiSupport<C> childItemMultiTypeSupport) {
+    public void setChildItemMultiTypeSupport(ExpChildMultiItemSupport<C> childItemMultiTypeSupport) {
         this.mChildItemMultiTypeSupport = childItemMultiTypeSupport;
     }
 

@@ -4,17 +4,17 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item
-        android:id="@+id/item_linear"
+        android:id="@+id/item_single"
         android:checkable="false"
         android:enabled="true"
         android:icon="@mipmap/ic_launcher"
-        android:title="线性布局"
+        android:title="Single Item"
         android:visible="true"
         app:showAsAction="never"/>
     <item
-        android:id="@+id/item_grid"
+        android:id="@+id/item_multi"
         android:enabled="true"
-        android:title="网格布局"
+        android:title="Multi Item"
         android:visible="true"
         app:showAsAction="never"/>
 </menu>

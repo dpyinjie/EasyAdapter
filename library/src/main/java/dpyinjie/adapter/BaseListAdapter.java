@@ -16,21 +16,21 @@ import java.util.Comparator;
 import java.util.List;
 
 import dpyinjie.adapter.holder.ListHolder;
-import dpyinjie.adapter.multitype.ListItemMultiSupport;
+import dpyinjie.adapter.multitype.ListMultiItemSupport;
 
 
 public abstract class BaseListAdapter<D> extends BaseAdapter implements DataManager<D> {
 
     private final Object mLock = new Object();
     private Context mContext;
-    private int mResource;
+    private int mItemLayoutRes;
     private List<D> mDataSet;
     private boolean mNotifyOnChange = true;
-    private ListItemMultiSupport<D> mMultiItemSupport;
+    private ListMultiItemSupport<D> mMultiItemSupport;
 
 
     public BaseListAdapter(Context context) {
-        init(context, mResource, new ArrayList<D>());
+        init(context, mItemLayoutRes, new ArrayList<D>());
     }
 
 
@@ -47,7 +47,7 @@ public abstract class BaseListAdapter<D> extends BaseAdapter implements DataMana
     }
 
     public BaseListAdapter(Context context, D[] dataSet) {
-        init(context, mResource, Arrays.asList(dataSet));
+        init(context, mItemLayoutRes, Arrays.asList(dataSet));
     }
 
     public BaseListAdapter(Context context, int resource, List<D> dataSet) {
@@ -55,7 +55,7 @@ public abstract class BaseListAdapter<D> extends BaseAdapter implements DataMana
     }
 
     public BaseListAdapter(Context context, List<D> dataSet) {
-        init(context, mResource, dataSet);
+        init(context, mItemLayoutRes, dataSet);
     }
 
     private void init(Context context, int resourceId, List<D> dataSet) {
@@ -63,7 +63,7 @@ public abstract class BaseListAdapter<D> extends BaseAdapter implements DataMana
             dataSet = new ArrayList<>();
         }
         mContext = context;
-        mResource = resourceId;
+        mItemLayoutRes = resourceId;
         mDataSet = dataSet;
     }
 
@@ -87,9 +87,9 @@ public abstract class BaseListAdapter<D> extends BaseAdapter implements DataMana
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         if (mMultiItemSupport != null) {
-            mResource = mMultiItemSupport.getItemLayoutId(position, getItem(position));
+            mItemLayoutRes = mMultiItemSupport.getItemLayoutId(getItemViewType(position));
         }
-        ListHolder holder = ListHolder.getHolder(mContext, convertView, parent, mResource, position);
+        ListHolder holder = ListHolder.getHolder(mContext, convertView, parent, mItemLayoutRes, position);
         onBindViews(getItemViewType(position), holder, position, getItem(position));
         return holder.getConvertView();
     }
@@ -97,14 +97,14 @@ public abstract class BaseListAdapter<D> extends BaseAdapter implements DataMana
     /**
      * @return the mMultiItemSupport
      */
-    public ListItemMultiSupport<D> getMultiItemSupport() {
+    public ListMultiItemSupport<D> getMultiItemSupport() {
         return mMultiItemSupport;
     }
 
     /**
      * @param multiViewTypeSupport the mMultiItemSupport to set
      */
-    public void setMultiItemSupport(ListItemMultiSupport<D> multiViewTypeSupport) {
+    public void setMultiItemSupport(ListMultiItemSupport<D> multiViewTypeSupport) {
         this.mMultiItemSupport = multiViewTypeSupport;
     }
 
@@ -114,7 +114,7 @@ public abstract class BaseListAdapter<D> extends BaseAdapter implements DataMana
      * @param position
      * @param data
      */
-    public abstract void onBindViews(int itemViewType, ListHolder holder, int position, D data);
+    protected abstract void onBindViews(int itemViewType, ListHolder holder, int position, D data);
 
 
     @Override

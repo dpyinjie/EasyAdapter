@@ -5,14 +5,34 @@ package dpyinjie.easyadapter;
  */
 public class User {
 
+
+    public static final int TYPE_1 = 1;
+
+    public static final int TYPE_2 = 2;
+
+    private int type = TYPE_1;
+
     private String name;
 
     private int age;
 
-
     public User(String name, int age) {
         this.name = name;
         this.age = age;
+    }
+
+    public User(int type, String name, int age) {
+        this.type = type;
+        this.name = name;
+        this.age = age;
+    }
+
+    public int getType() {
+        return type;
+    }
+
+    public void setType(int type) {
+        this.type = type;
     }
 
     public String getName() {

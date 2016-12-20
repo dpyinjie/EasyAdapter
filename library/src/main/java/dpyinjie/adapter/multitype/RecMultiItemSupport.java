@@ -1,6 +1,6 @@
 package dpyinjie.adapter.multitype;
 
-public interface RecItemMultiSupport<D> {
+public interface RecMultiItemSupport<D> {
 
 
     int getItemLayoutId(int viewType);

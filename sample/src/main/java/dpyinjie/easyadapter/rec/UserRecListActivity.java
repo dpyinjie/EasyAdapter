@@ -2,7 +2,6 @@ package dpyinjie.easyadapter.rec;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
@@ -13,8 +12,10 @@ import android.widget.Toast;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import dpyinjie.adapter.BaseRecAdapter;
 import dpyinjie.adapter.rec.OnRecItemTouchListener;
 import dpyinjie.easyadapter.DATA;
+import dpyinjie.easyadapter.User;
 import dpyinjie.easyadapter.sample.R;
 
 public class UserRecListActivity extends AppCompatActivity {
@@ -26,12 +27,12 @@ public class UserRecListActivity extends AppCompatActivity {
     @BindView(R.id.activity_user_rec_list)
     LinearLayout mActivityUserRecList;
 
-
-    private UserRecAdapter mAdapter;
+    private BaseRecAdapter<User> mAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_user_rec_list);
         ButterKnife.bind(this);
 
@@ -48,15 +49,24 @@ public class UserRecListActivity extends AppCompatActivity {
 
                 switch (item.getItemId()) {
 
-                    case R.id.item_linear:
-                        LinearLayoutManager linearManaer = new LinearLayoutManager(UserRecListActivity.this);
-                        mRvUser.setLayoutManager(linearManaer);
-                        return true;
+                    case R.id.item_single://
+                    {
+                        mAdapter = new SingleUserRecAdapter(UserRecListActivity.this);
+                        mRvUser.setAdapter(mAdapter);
+                        mAdapter.add(DATA.getSingleUserList());
+                        mToolbar.setTitle("Rec Single Item");
 
-                    case R.id.item_grid:
-                        GridLayoutManager gridManager = new GridLayoutManager(UserRecListActivity.this, 4);
-                        mRvUser.setLayoutManager(gridManager);
-                        return true;
+                    }
+                    return true;
+
+                    case R.id.item_multi://
+                    {
+                        mAdapter = new MultiUserRecAdapter(UserRecListActivity.this);
+                        mRvUser.setAdapter(mAdapter);
+                        mAdapter.add(DATA.getMultiUserList());
+                        mToolbar.setTitle("Rec Multi Item");
+                    }
+                    return true;
                 }
                 return false;
             }
@@ -68,20 +78,22 @@ public class UserRecListActivity extends AppCompatActivity {
     private void init() {
         LinearLayoutManager layoutManaer = new LinearLayoutManager(this);
         mRvUser.setLayoutManager(layoutManaer);
-        mAdapter = new UserRecAdapter(this);
+        mAdapter = new SingleUserRecAdapter(this);
         mRvUser.setAdapter(mAdapter);
-        mAdapter.add(DATA.getUserList());
+        mAdapter.add(DATA.getSingleUserList());
 
         mRvUser.addOnItemTouchListener(new OnRecItemTouchListener(mRvUser) {
 
             @Override
             public void onItemClick(RecyclerView.ViewHolder holder, int adapterPosition, int layoutPosition) {
-                Toast.makeText(UserRecListActivity.this, "点击 " + mAdapter.getItem(adapterPosition).getName(), Toast.LENGTH_SHORT).show();
+                User user = mAdapter.getItem(adapterPosition);
+                Toast.makeText(UserRecListActivity.this, "点击 name=" + user.getName() + " type=" + user.getType(), Toast.LENGTH_SHORT).show();
             }
 
             @Override
             public void onItemLongClick(RecyclerView.ViewHolder holder, int adapterPosition, int layoutPosition) {
-                Toast.makeText(UserRecListActivity.this, "长按 " + mAdapter.getItem(adapterPosition).getName(), Toast.LENGTH_SHORT).show();
+                User user = mAdapter.getItem(adapterPosition);
+                Toast.makeText(UserRecListActivity.this, "长按 name=" + user.getName() + " type=" + user.getType(), Toast.LENGTH_SHORT).show();
             }
         });
     }

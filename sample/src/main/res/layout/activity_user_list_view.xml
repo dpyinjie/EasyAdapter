@@ -15,6 +15,8 @@
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
         android:background="@color/colorPrimary"
+        app:subtitle="点击菜单切换 single/multi Item"
+        app:subtitleTextColor="#eae1e1"
         app:navigationIcon="@drawable/ic_arrow_back_white_24dp"
         app:title="ListView Sample"
         app:titleTextColor="#eae1e1"/>
@@ -23,6 +25,7 @@
         android:id="@+id/lv_user"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:listitem="@layout/item_user_info"/>
+        android:overScrollMode="never"
+        tools:listitem="@layout/item_user_type_1_info"/>
 
 </LinearLayout>

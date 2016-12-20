@@ -2,11 +2,11 @@
 
 # EasyAdapter
 
+[示例 APK 下载](http://fir.im/9whv)
+
 简化 Android 适配器编程库,内部都使用了 ViewHolder 模式。 包含 ListView 和 RecyclerView.
 
 个人能力有限, 在使用的过程中如果遇到 Bug , 欢迎提交 Issue。
-
-[示例 APK 下载](http://fir.im/9whv)
 
 ## ListView 代码示例
 

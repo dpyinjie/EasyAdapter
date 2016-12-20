@@ -14,7 +14,7 @@ import java.util.Comparator;
 import java.util.List;
 
 import dpyinjie.adapter.holder.RecHolder;
-import dpyinjie.adapter.multitype.RecItemMultiSupport;
+import dpyinjie.adapter.multitype.RecMultiItemSupport;
 
 
 public abstract class BaseRecAdapter<D> extends RecyclerView.Adapter<RecHolder> implements DataManager<D> {
@@ -22,7 +22,7 @@ public abstract class BaseRecAdapter<D> extends RecyclerView.Adapter<RecHolder> 
     private final Object mLock = new Object();
     private List<D> mDataSet;
     private boolean mNotifyOnChange = true;
-    private RecItemMultiSupport<D> mMultiItemSupport;
+    private RecMultiItemSupport<D> mMultiItemSupport;
     private int mItemLayoutId;
     private LayoutInflater mInflater;
     private Context mContext;
@@ -94,14 +94,14 @@ public abstract class BaseRecAdapter<D> extends RecyclerView.Adapter<RecHolder> 
     /**
      * @return
      */
-    public RecItemMultiSupport<D> getMultiItemSupport() {
+    public RecMultiItemSupport<D> getMultiItemSupport() {
         return mMultiItemSupport;
     }
 
     /**
      * @param multiItemSupport
      */
-    public void setMultiItemSupport(RecItemMultiSupport<D> multiItemSupport) {
+    public void setMultiItemSupport(RecMultiItemSupport<D> multiItemSupport) {
         mMultiItemSupport = multiItemSupport;
     }
 
@@ -127,7 +127,7 @@ public abstract class BaseRecAdapter<D> extends RecyclerView.Adapter<RecHolder> 
      * @param position
      * @param data
      */
-    public abstract void onBindViews(int itemViewType, RecHolder holder, int position, D data);
+    protected abstract void onBindViews(int itemViewType, RecHolder holder, int position, D data);
 
 
     @Override

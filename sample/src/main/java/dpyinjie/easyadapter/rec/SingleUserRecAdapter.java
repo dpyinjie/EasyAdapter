@@ -10,11 +10,11 @@ import dpyinjie.easyadapter.sample.R;
 /**
  * Created by YinJie on 2016/12/16 15:39.
  */
-public class UserRecAdapter extends BaseRecAdapter<User> {
+public class SingleUserRecAdapter extends BaseRecAdapter<User> {
 
 
-    public UserRecAdapter(Context context) {
-        super(context, R.layout.item_user_info);
+    public SingleUserRecAdapter(Context context) {
+        super(context, R.layout.item_user_type_1_info);
     }
 
     @Override
