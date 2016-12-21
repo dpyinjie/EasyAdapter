@@ -21,22 +21,16 @@
 ![RecyclerView single Item](https://raw.githubusercontent.com/dpyinjie/easy-adapter/master/raw/rec_multi_item.png)
 
 
-## Usage
+## Integrate
 
-1. 在 Project Level 的 build.gradle 中添加   
+1. 在 Project Level 的 build.gradle 中添加 jitpack 仓库。  
 
 	```
-	...
-	allprojects {
-    repositories {
-        maven { url "https://jitpack.io" }//添加此行代码
-    }
-} 
-...
-
+maven { url "https://jitpack.io" }
+	 
 	```  
  
-2. 在 Module Level 的 build.gradle 中添加   
+2. 在 Module Level 的 build.gradle 中添加依赖   
 
 	`compile 'com.github.dpyinjie:easy-adapter:1.0.0'`
 
@@ -45,8 +39,7 @@
 ### Single Item
 
 1. 	适配器类继承 `dpyinjie.adapter.BaseListAdapter<D>` , 实现抽象方法，泛型<D>表示你的适配器所绑定的数据类型。
-2. 给你的 ListView 直接设置适配器即可。
-3. 数据集变化可通过适配器的一系列方法触发更新 UI。
+2. 数据集变化可通过适配器的一系列方法触发更新 UI (请看如下示例代码)。
 
 ```
 public class UserListAdapter extends BaseListAdapter<User> {
@@ -57,15 +50,33 @@ public class UserListAdapter extends BaseListAdapter<User> {
 
     @Override
     public void onBindViews(int itemViewType, ListHolder holder, int position, User user) {
+   
+   // holder 内部使用了一个 SparseArray 来缓存控件
+    // holder 提供了一系列更新 UI 控件的方法，分别与该 View 的一些 set... 方法相对应。
+    
         holder.setText(R.id.tv_name, user.getName());
         holder.setText(R.id.tv_age, "年龄： " + user.getAge());
         holder.set...
         
-        //通过 id 获得 View 对象，即可实现对 View 对象的其它操作
+        //通过 id 获取任何 View 对象，即可实现对 View 对象的其它操作。
         TextView textView = holder.getView(R.id.tv_name);   
+        
        }
 }
 ```
+
+3. 触发数据集合更新
+
+可以直接通过适配器的一系列方法触发数据更新，刷新列表。
+
+```
+adapter.add..
+adapter.remove...
+adapter.insert...
+adapter.clear...
+
+```
+这些方法定义在 `dpyinjie.adapter.DataManager` 这个接口中。
 
 ### Multi Item
 
