@@ -40,6 +40,17 @@ maven { url "https://jitpack.io" }
 
 1. 	适配器类继承 `dpyinjie.adapter.BaseListAdapter<D>` , 实现抽象方法，泛型<D>表示你的适配器所绑定的数据类型。
 2. 数据集变化可通过适配器的一系列方法触发更新 UI (请看如下示例代码)。
+3.  触发数据集合更新，可以直接通过适配器的一系列方法触发数据更新，刷新列表。
+
+```
+adapter.add..
+adapter.remove...
+adapter.insert...
+adapter.clear...
+
+```
+
+示例代码：
 
 ```
 public class UserListAdapter extends BaseListAdapter<User> {
@@ -64,19 +75,6 @@ public class UserListAdapter extends BaseListAdapter<User> {
        }
 }
 ```
-
-3. 触发数据集合更新
-
-可以直接通过适配器的一系列方法触发数据更新，刷新列表。
-
-```
-adapter.add..
-adapter.remove...
-adapter.insert...
-adapter.clear...
-
-```
-这些方法定义在 `dpyinjie.adapter.DataManager` 这个接口中。
 
 ### Multi Item
 
