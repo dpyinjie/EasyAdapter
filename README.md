@@ -1,4 +1,4 @@
-[![](https://jitpack.io/v/dpyinjie/easy-adapter.svg)](https://jitpack.io/#dpyinjie/easy-adapter)
+[![API](https://img.shields.io/badge/API-8%2B-brightgreen.svg?style=flat)](https://android-arsenal.com/api?level=8) [![](https://jitpack.io/v/dpyinjie/easy-adapter.svg)](https://jitpack.io/#dpyinjie/easy-adapter)
 
 # EasyAdapter
 
