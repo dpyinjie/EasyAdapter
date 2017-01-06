@@ -7,6 +7,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
+    android:background="@color/colorPrimary"
     android:orientation="vertical"
     tools:context="dpyinjie.easyadapter.rec.UserRecListActivity">
 
@@ -15,7 +16,6 @@
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
         android:background="@color/colorPrimary"
-        android:elevation="4dp"
         app:navigationIcon="@drawable/ic_arrow_back_white_24dp"
         app:subtitle="点击菜单切换 single/multi Item"
         app:subtitleTextColor="#eae1e1"

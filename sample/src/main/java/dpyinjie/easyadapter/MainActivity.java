@@ -3,8 +3,10 @@ package dpyinjie.easyadapter;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.Button;
+import android.widget.LinearLayout;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -20,6 +22,13 @@ public class MainActivity extends AppCompatActivity {
     Button mBtnListviewSample;
     @BindView(R.id.btn_recyslerview_sample)
     Button mBtnRecyslerviewSample;
+    @BindView(R.id.toolbar)
+    Toolbar mToolbar;
+    @BindView(R.id.activity_main)
+    LinearLayout mActivityMain;
+    @BindView(R.id.btn_test)
+    Button mBtnTest;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,7 +37,7 @@ public class MainActivity extends AppCompatActivity {
         ButterKnife.bind(this);
     }
 
-    @OnClick({R.id.btn_listview_sample, R.id.btn_recyslerview_sample})
+    @OnClick({R.id.btn_listview_sample, R.id.btn_recyslerview_sample, R.id.btn_test})
     public void onClick(View view) {
 
         switch (view.getId()) {
@@ -39,12 +48,15 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
             break;
+
             case R.id.btn_recyslerview_sample://
             {
                 Intent intent = new Intent(this, UserRecListActivity.class);
                 startActivity(intent);
             }
             break;
+
         }
     }
+
 }
