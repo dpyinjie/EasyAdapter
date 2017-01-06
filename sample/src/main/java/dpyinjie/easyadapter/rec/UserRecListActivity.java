@@ -13,6 +13,7 @@ import android.widget.Toast;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import dpyinjie.adapter.BaseRecAdapter;
+import dpyinjie.adapter.rec.DefItemDecoration;
 import dpyinjie.adapter.rec.OnRecItemTouchListener;
 import dpyinjie.easyadapter.DATA;
 import dpyinjie.easyadapter.User;
@@ -78,6 +79,7 @@ public class UserRecListActivity extends AppCompatActivity {
     private void init() {
         LinearLayoutManager layoutManaer = new LinearLayoutManager(this);
         mRvUser.setLayoutManager(layoutManaer);
+        mRvUser.addItemDecoration(new DefItemDecoration(this, layoutManaer.getOrientation()));
         mAdapter = new SingleUserRecAdapter(this);
         mRvUser.setAdapter(mAdapter);
         mAdapter.add(DATA.getSingleUserList());
@@ -97,6 +99,5 @@ public class UserRecListActivity extends AppCompatActivity {
             }
         });
     }
-
 
 }
