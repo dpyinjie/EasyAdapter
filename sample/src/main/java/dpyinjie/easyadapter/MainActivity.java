@@ -26,8 +26,6 @@ public class MainActivity extends AppCompatActivity {
     Toolbar mToolbar;
     @BindView(R.id.activity_main)
     LinearLayout mActivityMain;
-    @BindView(R.id.btn_test)
-    Button mBtnTest;
 
 
     @Override
@@ -37,7 +35,7 @@ public class MainActivity extends AppCompatActivity {
         ButterKnife.bind(this);
     }
 
-    @OnClick({R.id.btn_listview_sample, R.id.btn_recyslerview_sample, R.id.btn_test})
+    @OnClick({R.id.btn_listview_sample, R.id.btn_recyslerview_sample})
     public void onClick(View view) {
 
         switch (view.getId()) {

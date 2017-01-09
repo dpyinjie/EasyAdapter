@@ -11,11 +11,20 @@ android {
         versionCode 2
         versionName '2.0.0'
     }
+
     buildTypes {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
+    }
+}
+
+
+repositories {
+
+    flatDir {
+        dirs 'libs'
     }
 }
 
@@ -28,4 +37,7 @@ dependencies {
     compile 'com.jakewharton:butterknife:8.4.0'
     annotationProcessor 'com.jakewharton:butterknife-compiler:8.4.0'
     compile 'com.android.support:design:25.1.0'
+
+//    compile(name: 'SwipeBackLayout-V1.1.0', ext: 'aar')
+//    compile 'com.github.liuguangqiang.swipeback:library:1.0.2@aar'
 }
