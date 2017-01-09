@@ -253,8 +253,6 @@ public class MultiUserRecAdapter extends BaseRecAdapter<User> {
 
 ## Thanks
 
-[liuguangqiang/SwipeBack](https://github.com/liuguangqiang/SwipeBack)
-
 [hongyangAndroid/baseAdapter](https://github.com/hongyangAndroid/baseAdapter)
 
 [JoanZapata/base-adapter-helper](https://github.com/JoanZapata/base-adapter-helper)
