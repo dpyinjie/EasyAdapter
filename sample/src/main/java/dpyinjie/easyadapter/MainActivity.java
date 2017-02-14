@@ -6,7 +6,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.Button;
-import android.widget.LinearLayout;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -24,8 +23,6 @@ public class MainActivity extends AppCompatActivity {
     Button mBtnRecyslerviewSample;
     @BindView(R.id.toolbar)
     Toolbar mToolbar;
-    @BindView(R.id.activity_main)
-    LinearLayout mActivityMain;
 
 
     @Override

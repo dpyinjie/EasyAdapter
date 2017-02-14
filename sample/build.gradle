@@ -1,6 +1,10 @@
 apply plugin: 'com.android.application'
 
 
+def releaseTime() {
+    return new Date().format("yyyy-MM-dd", TimeZone.getTimeZone("UTC"))
+}
+
 android {
     compileSdkVersion 25
     buildToolsVersion '25.0.0'
@@ -12,12 +16,77 @@ android {
         versionName '2.0.0'
     }
 
-    buildTypes {
+
+    signingConfigs {
+
+        debug {
+            // No debug config
+        }
+
         release {
-            minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            storeFile file("../yourapp.keystore")
+            storePassword "your password"
+            keyAlias "your alias"
+            keyPassword "your password"
         }
     }
+
+    buildTypes {
+
+        debug {
+
+            buildConfigField "boolean", "LOG_DEBUG", "true" // 显示Log
+
+            versionNameSuffix "-debug"
+            minifyEnabled false
+            zipAlignEnabled false
+            shrinkResources false
+            signingConfig signingConfigs.debug
+        }
+
+        release {
+
+            buildConfigField "boolean", "LOG_DEBUG", "false"  // 不显示Log
+            minifyEnabled true
+            zipAlignEnabled true
+            shrinkResources true // 移除无用的resource文件
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.release
+
+            applicationVariants.all { variant ->
+                variant.outputs.each { output ->
+                    def outputFile = output.outputFile
+                    if (outputFile != null && outputFile.name.endsWith('.apk')) {
+                        def fileName = "boohee_v${defaultConfig.versionName}_${releaseTime()}_${variant.productFlavors[0].name}.apk"
+                        output.outputFile = new File(outputFile.parent, fileName)
+                    }
+                }
+            }
+
+        }
+    }
+
+    // 友盟多渠道打包
+    productFlavors {
+
+        wandoujia {}
+
+        baidu {}
+
+        _360 {}
+
+        yingyongbao {}
+
+        huawei {}
+
+        xiaomi {}
+
+        productFlavors.all {
+            flavor -> flavor.manifestPlaceholders = [UMENG_CHANNEL_VALUE: name]
+        }
+
+    }
+
 }
 
 
@@ -37,4 +106,5 @@ dependencies {
     compile 'com.jakewharton:butterknife:8.4.0'
     annotationProcessor 'com.jakewharton:butterknife-compiler:8.4.0'
     compile 'com.android.support:design:25.1.0'
+    compile 'com.android.support.constraint:constraint-layout:1.0.0-beta4'
 }
