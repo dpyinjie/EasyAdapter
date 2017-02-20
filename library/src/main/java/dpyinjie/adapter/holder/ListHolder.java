@@ -92,7 +92,7 @@ public class ListHolder implements HoldAble {
     @Override
     public HoldAble setImageUrl(@IdRes int viewId, @Nullable String url) {
         // TODO: 2017/2/20 加载网络图片
-        return null;
+        return this;
     }
 
     @Override
