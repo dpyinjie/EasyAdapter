@@ -69,6 +69,13 @@ public class RecHolder extends RecyclerView.ViewHolder implements HoldAble {
         return this;
     }
 
+
+    @Override
+    public HoldAble setImageUrl(@IdRes int viewId, @Nullable String url) {
+        // TODO: 2017/2/20 加载网络图片
+        return this;
+    }
+
     @Override
     public HoldAble setScaleType(@IdRes int viewId, ImageView.ScaleType scaleType) {
         ImageView imageView = getView(viewId);

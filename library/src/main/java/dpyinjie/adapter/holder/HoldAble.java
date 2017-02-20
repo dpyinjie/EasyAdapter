@@ -62,6 +62,13 @@ interface HoldAble {
 
     /**
      * @param viewId
+     * @param url
+     * @return
+     */
+    HoldAble setImageUrl(@IdRes int viewId, @Nullable String url);
+
+    /**
+     * @param viewId
      * @param scaleType
      * @return
      */
