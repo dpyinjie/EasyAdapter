@@ -35,8 +35,8 @@ maven { url "https://jitpack.io" }
 
 	`compile 'com.github.dpyinjie:easy-adapter:xxx'`
 	
-> 依赖了 RecyclerView-25.1.0 ,如果想排除此依赖则使用
-> ` compile('com.github.dpyinjie:easy-adapter:xxx') {        exclude group: 'com.android.support', module: 'recyclerview-v7'}`
+> 依赖了 RecyclerView-25.1.0 ,如果想排除此依赖则使用   
+> ` compile('com.github.dpyinjie:easy-adapter:xxx') {           exclude group: 'com.android.support', module: 'recyclerview-v7'}`
 
 ## ListView Sample
 
