@@ -150,8 +150,7 @@ public abstract class BaseExpListAdapter<G, C> extends BaseExpandableListAdapter
      * @param isLastChild
      * @param c
      */
-    protected abstract void bindChildView(ListHolder holder, int groupPosition, int childPosition,
-                                          boolean isLastChild, C c);
+    protected abstract void bindChildView(ListHolder holder, int groupPosition, int childPosition, boolean isLastChild, C c);
 
     @Override
     public int getGroupCount() {
