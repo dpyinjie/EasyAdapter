@@ -167,11 +167,7 @@ public abstract class BaseRecAdapter<D> extends RecyclerView.Adapter<RecHolder> 
         if (Utils.isEmptyOrNull(items)) {
             return;
         }
-        synchronized (mLock) {
-            Collections.addAll(mDataSet, items);
-        }
-        if (mNotifyOnChange)
-            notifyDataSetChanged();
+        add(Arrays.asList(items));
     }
 
     @Override

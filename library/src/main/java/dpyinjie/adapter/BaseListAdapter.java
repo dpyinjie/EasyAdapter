@@ -150,11 +150,7 @@ public abstract class BaseListAdapter<D> extends BaseAdapter implements DataMana
         if (Utils.isEmptyOrNull(items)) {
             return;
         }
-        synchronized (mLock) {
-            Collections.addAll(mDataSet, items);
-        }
-        if (mNotifyOnChange)
-            notifyDataSetChanged();
+        add(Arrays.asList(items));
     }
 
     @Override
