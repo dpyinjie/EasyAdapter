@@ -151,4 +151,14 @@ public interface DataManager<D> {
      */
     boolean isEmpty();
 
+    /**
+     * @param dataSet
+     */
+    void refresh(Collection<D> dataSet);
+
+    /**
+     * @param items
+     */
+    void refresh(D... items);
+
 }

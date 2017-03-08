@@ -94,6 +94,10 @@ public abstract class BaseListAdapter<D> extends BaseAdapter implements DataMana
         return holder.getConvertView();
     }
 
+    public Context getContext() {
+        return mContext;
+    }
+
     /**
      * @return the mMultiItemSupport
      */
@@ -305,5 +309,21 @@ public abstract class BaseListAdapter<D> extends BaseAdapter implements DataMana
     @Override
     public boolean isEmpty() {
         return mDataSet.isEmpty();
+    }
+
+    @Override
+    public void refresh(Collection<D> dataSet) {
+        synchronized (mLock) {
+            mDataSet.clear();
+            mDataSet.addAll(dataSet);
+        }
+        if (mNotifyOnChange) {
+            notifyDataSetChanged();
+        }
+    }
+
+    @Override
+    public void refresh(D... items) {
+        refresh(Arrays.asList(items));
     }
 }

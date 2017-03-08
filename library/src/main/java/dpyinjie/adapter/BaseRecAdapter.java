@@ -331,4 +331,21 @@ public abstract class BaseRecAdapter<D> extends RecyclerView.Adapter<RecHolder> 
     public boolean isEmpty() {
         return mDataSet.isEmpty();
     }
+
+
+    @Override
+    public void refresh(Collection<D> dataSet) {
+        synchronized (mLock) {
+            mDataSet.clear();
+            mDataSet.addAll(dataSet);
+        }
+        if (mNotifyOnChange) {
+            notifyDataSetChanged();
+        }
+    }
+
+    @Override
+    public void refresh(D... items) {
+        refresh(Arrays.asList(items));
+    }
 }
