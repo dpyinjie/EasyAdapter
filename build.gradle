@@ -28,3 +28,9 @@ allprojects {
 task clean(type: Delete) {
     delete rootProject.buildDir
 }
+
+// Define versions in a single place
+ext {
+    buildToolsVersion = '25.0.2'
+    supportLibraryVersion = '25.3.0'
+}

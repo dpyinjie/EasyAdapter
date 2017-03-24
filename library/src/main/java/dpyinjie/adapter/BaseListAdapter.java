@@ -4,6 +4,7 @@
 package dpyinjie.adapter;
 
 import android.content.Context;
+import android.support.annotation.Nullable;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
@@ -38,7 +39,7 @@ public abstract class BaseListAdapter<D> extends BaseAdapter implements DataMana
         init(context, resource, new ArrayList<D>());
     }
 
-    public BaseListAdapter(Context context, int resource, D[] dataSet) {
+    public BaseListAdapter(Context context, int resource, @Nullable D[] dataSet) {
         if (dataSet == null) {
             init(context, resource, null);
             return;
@@ -46,19 +47,19 @@ public abstract class BaseListAdapter<D> extends BaseAdapter implements DataMana
         init(context, resource, Arrays.asList(dataSet));
     }
 
-    public BaseListAdapter(Context context, D[] dataSet) {
+    public BaseListAdapter(Context context, @Nullable D[] dataSet) {
         init(context, mItemLayoutRes, Arrays.asList(dataSet));
     }
 
-    public BaseListAdapter(Context context, int resource, List<D> dataSet) {
+    public BaseListAdapter(Context context, int resource, @Nullable List<D> dataSet) {
         init(context, resource, dataSet);
     }
 
-    public BaseListAdapter(Context context, List<D> dataSet) {
+    public BaseListAdapter(Context context, @Nullable List<D> dataSet) {
         init(context, mItemLayoutRes, dataSet);
     }
 
-    private void init(Context context, int resourceId, List<D> dataSet) {
+    private void init(Context context, int resourceId, @Nullable List<D> dataSet) {
         if (dataSet == null) {
             dataSet = new ArrayList<>();
         }

@@ -1,6 +1,7 @@
 package dpyinjie.adapter;
 
 import android.content.Context;
+import android.support.annotation.Nullable;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -46,7 +47,7 @@ public abstract class BaseRecAdapter<D> extends RecyclerView.Adapter<RecHolder> 
      * @param context
      * @param dataSet
      */
-    public BaseRecAdapter(Context context, D[] dataSet) {
+    public BaseRecAdapter(Context context, @Nullable D[] dataSet) {
         init(context, 0, Arrays.asList(dataSet));
     }
 
@@ -55,7 +56,7 @@ public abstract class BaseRecAdapter<D> extends RecyclerView.Adapter<RecHolder> 
      * @param dataSet
      * @param itemViewLayoutId
      */
-    public BaseRecAdapter(Context context, D[] dataSet, int itemViewLayoutId) {
+    public BaseRecAdapter(Context context, @Nullable D[] dataSet, int itemViewLayoutId) {
         init(context, itemViewLayoutId, Arrays.asList(dataSet));
     }
 
@@ -63,7 +64,7 @@ public abstract class BaseRecAdapter<D> extends RecyclerView.Adapter<RecHolder> 
      * @param context
      * @param dataSet
      */
-    public BaseRecAdapter(Context context, List<D> dataSet) {
+    public BaseRecAdapter(Context context, @Nullable List<D> dataSet) {
         init(context, 0, dataSet);
     }
 
@@ -72,7 +73,7 @@ public abstract class BaseRecAdapter<D> extends RecyclerView.Adapter<RecHolder> 
      * @param dataSet
      * @param itemViewLayoutId
      */
-    public BaseRecAdapter(Context context, List<D> dataSet, int itemViewLayoutId) {
+    public BaseRecAdapter(Context context, @Nullable List<D> dataSet, int itemViewLayoutId) {
         init(context, itemViewLayoutId, dataSet);
     }
 
@@ -81,7 +82,7 @@ public abstract class BaseRecAdapter<D> extends RecyclerView.Adapter<RecHolder> 
      * @param itemViewLayoutId
      * @param dataSet
      */
-    private void init(Context context, int itemViewLayoutId, List<D> dataSet) {
+    private void init(Context context, int itemViewLayoutId, @Nullable List<D> dataSet) {
         if (dataSet == null) {
             dataSet = new ArrayList<>();
         }
