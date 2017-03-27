@@ -1,10 +1,9 @@
 package dpyinjie.adapter;
 
 import android.content.Context;
+import android.support.annotation.LayoutRes;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.RecyclerView;
-import android.view.LayoutInflater;
-import android.view.View;
 import android.view.ViewGroup;
 
 import java.util.ArrayList;
@@ -25,7 +24,6 @@ public abstract class BaseRecAdapter<D> extends RecyclerView.Adapter<RecHolder> 
     private boolean mNotifyOnChange = true;
     private RecMultiItemSupport<D> mMultiItemSupport;
     private int mItemLayoutId;
-    private LayoutInflater mInflater;
     private Context mContext;
 
     /**
@@ -37,10 +35,10 @@ public abstract class BaseRecAdapter<D> extends RecyclerView.Adapter<RecHolder> 
 
     /**
      * @param context
-     * @param itemViewLayoutId
+     * @param itemLayoutRes
      */
-    public BaseRecAdapter(Context context, int itemViewLayoutId) {
-        init(context, itemViewLayoutId, new ArrayList<D>());
+    public BaseRecAdapter(Context context, @LayoutRes int itemLayoutRes) {
+        init(context, itemLayoutRes, new ArrayList<D>());
     }
 
     /**
@@ -54,10 +52,10 @@ public abstract class BaseRecAdapter<D> extends RecyclerView.Adapter<RecHolder> 
     /**
      * @param context
      * @param dataSet
-     * @param itemViewLayoutId
+     * @param itemLayoutRes
      */
-    public BaseRecAdapter(Context context, @Nullable D[] dataSet, int itemViewLayoutId) {
-        init(context, itemViewLayoutId, Arrays.asList(dataSet));
+    public BaseRecAdapter(Context context, @Nullable D[] dataSet, @LayoutRes int itemLayoutRes) {
+        init(context, itemLayoutRes, Arrays.asList(dataSet));
     }
 
     /**
@@ -71,25 +69,24 @@ public abstract class BaseRecAdapter<D> extends RecyclerView.Adapter<RecHolder> 
     /**
      * @param context
      * @param dataSet
-     * @param itemViewLayoutId
+     * @param itemLayoutRes
      */
-    public BaseRecAdapter(Context context, @Nullable List<D> dataSet, int itemViewLayoutId) {
-        init(context, itemViewLayoutId, dataSet);
+    public BaseRecAdapter(Context context, @Nullable List<D> dataSet, @LayoutRes int itemLayoutRes) {
+        init(context, itemLayoutRes, dataSet);
     }
 
     /**
      * @param context
-     * @param itemViewLayoutId
+     * @param itemLayoutRes
      * @param dataSet
      */
-    private void init(Context context, int itemViewLayoutId, @Nullable List<D> dataSet) {
+    private void init(Context context, @LayoutRes int itemLayoutRes, @Nullable List<D> dataSet) {
         if (dataSet == null) {
             dataSet = new ArrayList<>();
         }
         mContext = context;
         mDataSet = dataSet;
-        mItemLayoutId = itemViewLayoutId;
-        mInflater = LayoutInflater.from(context);
+        mItemLayoutId = itemLayoutRes;
     }
 
     /**
@@ -111,8 +108,7 @@ public abstract class BaseRecAdapter<D> extends RecyclerView.Adapter<RecHolder> 
         if (mMultiItemSupport != null) {
             mItemLayoutId = mMultiItemSupport.getItemLayoutId(viewType);
         }
-        View itemView = mInflater.inflate(mItemLayoutId, parent, false);
-        RecHolder holder = new RecHolder(mContext, itemView);
+        RecHolder holder = RecHolder.createHolder(mContext, parent, mItemLayoutId);
         return holder;
     }
 

@@ -112,7 +112,7 @@ public abstract class BaseExpListAdapter<G, C> extends BaseExpandableListAdapter
      * @return
      */
     protected ListHolder getViewHolder(int position, View convertView, int layoutId, ViewGroup parent) {
-        return ListHolder.getHolder(mContext, convertView, parent, layoutId, position);
+        return ListHolder.getOrCreateHolder(mContext, convertView, parent, layoutId, position);
     }
 
     /**

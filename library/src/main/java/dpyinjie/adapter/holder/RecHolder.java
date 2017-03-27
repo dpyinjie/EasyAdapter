@@ -11,13 +11,16 @@ import android.support.annotation.ColorInt;
 import android.support.annotation.DrawableRes;
 import android.support.annotation.FloatRange;
 import android.support.annotation.IdRes;
+import android.support.annotation.LayoutRes;
 import android.support.annotation.Nullable;
 import android.support.annotation.StringRes;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.RecyclerView;
 import android.util.SparseArray;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.ViewGroup;
 import android.widget.Checkable;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -30,12 +33,26 @@ public class RecHolder extends RecyclerView.ViewHolder implements HoldAble {
     private View mConvertView;
     private SparseArray<View> mViewArray;
 
+    /**
+     * @param context
+     * @param parent
+     * @param layoutId
+     * @return
+     */
+    public static RecHolder createHolder(Context context, ViewGroup parent, @LayoutRes int layoutId) {
+        View itemView = LayoutInflater.from(context).inflate(layoutId, parent, false);
+        RecHolder holder = new RecHolder(context, itemView);
+        return holder;
+    }
 
-    public RecHolder(Context context, View itemView) {
+
+    private RecHolder(Context context, View itemView) {
         super(itemView);
         mContext = context;
         mConvertView = itemView;
         mViewArray = new SparseArray<>();
+
+        mConvertView.setTag(this);
     }
 
     @Override

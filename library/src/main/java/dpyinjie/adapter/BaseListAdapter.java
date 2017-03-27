@@ -4,6 +4,7 @@
 package dpyinjie.adapter;
 
 import android.content.Context;
+import android.support.annotation.LayoutRes;
 import android.support.annotation.Nullable;
 import android.view.View;
 import android.view.ViewGroup;
@@ -35,36 +36,36 @@ public abstract class BaseListAdapter<D> extends BaseAdapter implements DataMana
     }
 
 
-    public BaseListAdapter(Context context, int resource) {
-        init(context, resource, new ArrayList<D>());
+    public BaseListAdapter(Context context, @LayoutRes int itemLayoutRes) {
+        init(context, itemLayoutRes, new ArrayList<D>());
     }
 
-    public BaseListAdapter(Context context, int resource, @Nullable D[] dataSet) {
+    public BaseListAdapter(Context context, @LayoutRes int itemLayoutRes, @Nullable D[] dataSet) {
         if (dataSet == null) {
-            init(context, resource, null);
+            init(context, itemLayoutRes, null);
             return;
         }
-        init(context, resource, Arrays.asList(dataSet));
+        init(context, itemLayoutRes, Arrays.asList(dataSet));
     }
 
-    public BaseListAdapter(Context context, @Nullable D[] dataSet) {
+    public BaseListAdapter(Context context, D[] dataSet) {
         init(context, mItemLayoutRes, Arrays.asList(dataSet));
     }
 
-    public BaseListAdapter(Context context, int resource, @Nullable List<D> dataSet) {
-        init(context, resource, dataSet);
+    public BaseListAdapter(Context context, @LayoutRes int itemLayoutRes, @Nullable List<D> dataSet) {
+        init(context, itemLayoutRes, dataSet);
     }
 
-    public BaseListAdapter(Context context, @Nullable List<D> dataSet) {
+    public BaseListAdapter(Context context, List<D> dataSet) {
         init(context, mItemLayoutRes, dataSet);
     }
 
-    private void init(Context context, int resourceId, @Nullable List<D> dataSet) {
+    private void init(Context context, @LayoutRes int itemLayoutRes, @Nullable List<D> dataSet) {
         if (dataSet == null) {
             dataSet = new ArrayList<>();
         }
         mContext = context;
-        mItemLayoutRes = resourceId;
+        mItemLayoutRes = itemLayoutRes;
         mDataSet = dataSet;
     }
 
@@ -90,7 +91,7 @@ public abstract class BaseListAdapter<D> extends BaseAdapter implements DataMana
         if (mMultiItemSupport != null) {
             mItemLayoutRes = mMultiItemSupport.getItemLayoutId(getItemViewType(position));
         }
-        ListHolder holder = ListHolder.getHolder(mContext, convertView, parent, mItemLayoutRes, position);
+        ListHolder holder = ListHolder.getOrCreateHolder(mContext, convertView, parent, mItemLayoutRes, position);
         onBindViews(getItemViewType(position), holder, position, getItem(position));
         return holder.getConvertView();
     }

@@ -31,18 +31,19 @@ public class ListHolder implements HoldAble {
     private View mConvertView;
     private SparseArray<View> mViewArray;
 
+    public static ListHolder getOrCreateHolder(Context context, View convertView, ViewGroup parent, int layoutId, int position) {
+        if (convertView == null) {
+            return new ListHolder(context, parent, layoutId, position);
+        }
+        return (ListHolder) convertView.getTag();
+    }
+
+
     private ListHolder(Context context, ViewGroup parent, int layoutId, int position) {
         mContext = context;
         mViewArray = new SparseArray<>();
         mConvertView = LayoutInflater.from(context).inflate(layoutId, parent, false);
         mConvertView.setTag(this);
-    }
-
-    public static ListHolder getHolder(Context context, View convertView, ViewGroup parent, int layoutId, int position) {
-        if (convertView == null) {
-            return new ListHolder(context, parent, layoutId, position);
-        }
-        return (ListHolder) convertView.getTag();
     }
 
     @Override

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+
+    <!-- 线条颜色 -->
+    <color name="line_color">#C9C9C9</color>
+    <!-- 文本颜色(浅黑色) -->
+    <color name="textcolor_primary">#C70556</color>
+    <color name="textcolor_black">#333</color>
+    <color name="textcolor_white">#FFFFFFFF</color>
+    <color name="textcolor_666">#666</color>
+    <color name="textcolor_gray">#999</color>
+    <color name="textcolor_blue">#56ABE4</color>
+    <color name="textcolor_dark_blue">#0869fa</color>
+    <color name="background_dark_gray">#E3E3E3</color>
+    <color name="textColor_red">#f70511</color>
+    <!-- 淡黄色 -->
+    <color name="light_yellow">#FCF9EE</color>
+    <!-- 按下时的灰色 -->
+    <color name="pressed_gray">#BDBDBD</color>
+
+    <!-- 主要的背景色：灰色 -->
+    <color name="bg_color_gray">#F0F0F0</color>
+    <color name="bg_color_titlebar">#C70556</color>
+    <color name="bg_color_bottombar">#C70556</color>
+    <color name="bg_color_bottom_tab_focus">#333</color>
+    <color name="blue">#32c1df</color>
+    <color name="gray">#C9C9C9</color>
+    <color name="primary_dark">#AC0048</color>
+    <color name="red">#ff0000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="black">#ff000000</color>
+    <color name="transparent">#00000000</color>
+    <color name="backgroundColorPress">#DBDBD3</color>
+    <!--  -->
+
+
+
+
+
+
+
+</resources>

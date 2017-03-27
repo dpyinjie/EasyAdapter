@@ -6,6 +6,9 @@ import android.view.GestureDetector;
 import android.view.MotionEvent;
 import android.view.View;
 
+/**
+ * @see <a href="https://github.com/CymChad/BaseRecyclerViewAdapterHelper/blob/master/library/src/main/java/com/chad/library/adapter/base/listener/SimpleClickListener.java">SimpleClickListener</a>
+ */
 public class OnRecItemTouchListener implements RecyclerView.OnItemTouchListener {
 
     private GestureDetectorCompat mGestureDetector;
