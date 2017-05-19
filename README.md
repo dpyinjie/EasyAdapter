@@ -26,17 +26,15 @@
 
 1. 在 Project Level 的 build.gradle 中添加 jitpack 仓库。  
 
-	```
-maven { url "https://jitpack.io" }
-	 
-	```  
+	``` maven { url "https://jitpack.io" } ```
  
 2. 在 Module Level 的 build.gradle 中添加依赖   
 
 	`compile 'com.github.dpyinjie:easy-adapter:xxx'`
 	
 > 依赖了 RecyclerView-25.1.0 ,如果想排除此依赖则使用   
-> ` compile('com.github.dpyinjie:easy-adapter:xxx') {           exclude group: 'com.android.support', module: 'recyclerview-v7'}`
+> ` compile('com.github.dpyinjie:easy-adapter:xxx') {   
+        exclude group: 'com.android.support', module: 'recyclerview-v7'}`
 
 ## ListView Sample
 
