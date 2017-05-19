@@ -23,6 +23,5 @@ android {
 }
 
 dependencies {
-
-    compile "com.android.support:recyclerview-v7:$rootProject.supportLibraryVersion"
+    provided "com.android.support:recyclerview-v7:$rootProject.supportLibraryVersion"
 }

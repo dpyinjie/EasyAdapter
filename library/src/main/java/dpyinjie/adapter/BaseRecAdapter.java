@@ -118,13 +118,13 @@ public abstract class BaseRecAdapter<D> extends RecyclerView.Adapter<RecHolder> 
         onBindViews(getItemViewType(position), holder, position, getItem(position));
     }
 
-    /**
-     * @param itemViewType
-     * @param holder
-     * @param position
-     * @param data
-     */
-    protected abstract void onBindViews(int itemViewType, RecHolder holder, int position, D data);
+        /**
+         * @param itemViewType
+         * @param holder
+         * @param position
+         * @param data
+         */
+        protected abstract void onBindViews(int itemViewType, RecHolder holder, int position, D data);
 
 
     @Override
