@@ -1,5 +1,7 @@
 package dpyinjie.adapter;
 
+import android.support.annotation.IntRange;
+
 import java.util.Collection;
 import java.util.Comparator;
 
@@ -32,7 +34,7 @@ public interface DataManager<D> {
      * @param position
      * @param data
      */
-    void insert(int position, D data);
+    void insert(@IntRange(from = 0) int position, D data);
 
     /**
      * 在指定位置插入一个集合
@@ -40,7 +42,7 @@ public interface DataManager<D> {
      * @param position
      * @param collection
      */
-    void insert(int position, Collection<D> collection);
+    void insert(@IntRange(from = 0) int position, Collection<D> collection);
 
 
     /**
@@ -49,7 +51,7 @@ public interface DataManager<D> {
      * @param position
      * @param items
      */
-    void insert(int position, D... items);
+    void insert(@IntRange(from = 0) int position, D... items);
 
 
     /**
@@ -64,7 +66,7 @@ public interface DataManager<D> {
      *
      * @param position
      */
-    void remove(int position);
+    void remove(@IntRange(from = 0) int position);
 
 
     /**
@@ -106,7 +108,7 @@ public interface DataManager<D> {
      * @param position
      * @return
      */
-    D getItem(int position);
+    D getItem(@IntRange(from = 0) int position);
 
     /**
      * 获取指定元素的位置
@@ -122,7 +124,7 @@ public interface DataManager<D> {
      * @param position
      * @return
      */
-    long getItemId(int position);
+    long getItemId(@IntRange(from = 0) int position);
 
     /**
      * 更新数据集合

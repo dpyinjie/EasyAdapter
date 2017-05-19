@@ -244,7 +244,7 @@ public abstract class BaseListAdapter<D, H extends HoldAble> extends BaseAdapter
     }
 
     @Override
-    public D getItem(int position) {
+    public D getItem( int position) {
         return mDataSet.get(position);
     }
 
