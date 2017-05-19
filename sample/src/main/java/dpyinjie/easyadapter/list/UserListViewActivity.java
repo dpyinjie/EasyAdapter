@@ -23,7 +23,7 @@ public class UserListViewActivity extends AppCompatActivity {
     @BindView(R.id.toolbar)
     Toolbar mToolbar;
 
-    private BaseListAdapter<User> mAdapter;
+    private BaseListAdapter  mAdapter;
 
 
     @Override

@@ -19,7 +19,7 @@ import android.widget.ImageView;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 
-interface HoldAble {
+public interface HoldAble {
 
     /**
      * @return

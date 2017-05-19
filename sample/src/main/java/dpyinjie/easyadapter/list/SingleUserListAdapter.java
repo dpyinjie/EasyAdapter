@@ -10,7 +10,7 @@ import dpyinjie.easyadapter.sample.R;
 /**
  * Created by YinJie on 2016/12/10 10:44.
  */
-public class SingleUserListAdapter extends BaseListAdapter<User> {
+public class SingleUserListAdapter extends BaseListAdapter<User, ListHolder> {
 
     public SingleUserListAdapter(Context context) {
         super(context, R.layout.item_user_type_1_info);

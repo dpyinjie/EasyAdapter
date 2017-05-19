@@ -31,11 +31,11 @@ public class ListHolder implements HoldAble {
     private View mConvertView;
     private SparseArray<View> mViewArray;
 
-    public static ListHolder getOrCreateHolder(Context context, View convertView, ViewGroup parent, int layoutId, int position) {
+    public static <H extends HoldAble> H getOrCreateHolder(Context context, View convertView, ViewGroup parent, int layoutId, int position) {
         if (convertView == null) {
-            return new ListHolder(context, parent, layoutId, position);
+            return (H) new ListHolder(context, parent, layoutId, position);
         }
-        return (ListHolder) convertView.getTag();
+        return (H) convertView.getTag();
     }
 
 
