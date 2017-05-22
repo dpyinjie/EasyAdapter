@@ -11,7 +11,7 @@ import dpyinjie.easyadapter.sample.R;
 /**
  * Created by YinJie on 2016/12/20 15:30.
  */
-public class MultiUserListAdapter extends BaseListAdapter<User,ListHolder> {
+public class MultiUserListAdapter extends BaseListAdapter<User> {
 
     private static final int VIEW_TYPE_1 = 0;
 

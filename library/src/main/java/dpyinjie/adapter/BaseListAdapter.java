@@ -17,12 +17,11 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
-import dpyinjie.adapter.holder.HoldAble;
 import dpyinjie.adapter.holder.ListHolder;
 import dpyinjie.adapter.multitype.ListMultiItemSupport;
 
 
-public abstract class BaseListAdapter<D, H extends HoldAble> extends BaseAdapter implements DataManager<D> {
+public abstract class BaseListAdapter<D> extends BaseAdapter implements DataManager<D> {
 
     private final Object mLock = new Object();
     private Context mContext;
@@ -92,7 +91,7 @@ public abstract class BaseListAdapter<D, H extends HoldAble> extends BaseAdapter
         if (mMultiItemSupport != null) {
             mItemLayoutRes = mMultiItemSupport.getItemLayoutId(getItemViewType(position));
         }
-        H holder = ListHolder.getOrCreateHolder(mContext, convertView, parent, mItemLayoutRes, position);
+        ListHolder holder = ListHolder.getOrCreateHolder(mContext, convertView, parent, mItemLayoutRes, position);
         onBindViews(getItemViewType(position), holder, position, getItem(position));
         return holder.getConvertView();
     }
@@ -121,7 +120,7 @@ public abstract class BaseListAdapter<D, H extends HoldAble> extends BaseAdapter
      * @param position
      * @param data
      */
-    protected abstract void onBindViews(int itemViewType, H holder, int position, D data);
+    protected abstract void onBindViews(int itemViewType,ListHolder holder, int position, D data);
 
 
     @Override
