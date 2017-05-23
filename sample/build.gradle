@@ -118,6 +118,6 @@ dependencies {
     annotationProcessor 'com.jakewharton:butterknife-compiler:8.4.0'
 
     //
-    compile 'com.github.dpyinjie:easy-adapter:1.1.3'
+    compile 'com.github.dpyinjie:easy-adapter:1.1.4'
 
 }
