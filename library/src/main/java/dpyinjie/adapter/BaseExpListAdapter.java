@@ -55,8 +55,7 @@ public abstract class BaseExpListAdapter<G, C> extends BaseExpandableListAdapter
      * @param groupData
      * @param childData
      */
-    public BaseExpListAdapter(Context context, int groupLayoutId, int childLayoutId, List<G> groupData,
-                              List<List<C>> childData) {
+    public BaseExpListAdapter(Context context, int groupLayoutId, int childLayoutId, List<G> groupData, List<List<C>> childData) {
         super();
         init(context, groupLayoutId, childLayoutId, groupData, childData);
     }
@@ -68,13 +67,12 @@ public abstract class BaseExpListAdapter<G, C> extends BaseExpandableListAdapter
      * @param groupData
      * @param childData
      */
-    private void init(Context context, int groupLayoutId, int childLayoutId, List<G> groupData,
-                      List<List<C>> childData) {
+    private void init(Context context, int groupLayoutId, int childLayoutId, List<G> groupData, List<List<C>> childData) {
         if (groupData == null) {
-            groupData = new ArrayList<G>();
+            groupData = new ArrayList<>();
         }
         if (childData == null) {
-            childData = new ArrayList<List<C>>();
+            childData = new ArrayList<>();
         }
         mContext = context;
         mGroupDataSet = groupData;
@@ -89,19 +87,17 @@ public abstract class BaseExpListAdapter<G, C> extends BaseExpandableListAdapter
             mGroupLayoutId = mGroupItemMultiTypeSupport.getGroupLayoutId(groupPosition, getGroup(groupPosition));
         }
         ListHolder holder = getViewHolder(groupPosition, convertView, mGroupLayoutId, parent);
-        bindGroupView(holder, groupPosition, isExpanded, getGroup(groupPosition));
+        onBindGroupView(holder, groupPosition, isExpanded, getGroup(groupPosition));
         return holder.getConvertView();
     }
 
     @Override
-    public View getChildView(int groupPosition, int childPosition, boolean isLastChild, View convertView,
-                             ViewGroup parent) {
+    public View getChildView(int groupPosition, int childPosition, boolean isLastChild, View convertView, ViewGroup parent) {
         if (mChildItemMultiTypeSupport != null) {
-            mChildLayoutId = mChildItemMultiTypeSupport.getChildLayoutId(groupPosition, childPosition,
-                    getChild(groupPosition, childPosition));
+            mChildLayoutId = mChildItemMultiTypeSupport.getChildLayoutId(groupPosition, childPosition, getChild(groupPosition, childPosition));
         }
         ListHolder holder = getViewHolder(groupPosition, convertView, mChildLayoutId, parent);
-        bindChildView(holder, groupPosition, childPosition, isLastChild, getChild(groupPosition, childPosition));
+        onBindChildView(holder, groupPosition, childPosition, isLastChild, getChild(groupPosition, childPosition));
         return holder.getConvertView();
     }
 
@@ -133,24 +129,24 @@ public abstract class BaseExpListAdapter<G, C> extends BaseExpandableListAdapter
      * Bind the Data to the Group View. sub Class must implements this method to
      * show data.
      *
-     * @param holder
-     * @param groupPosition
-     * @param isExpanded
-     * @param g
+     * @param holder        Item holder
+     * @param groupPosition Group 位置
+     * @param isExpanded    是否展开
+     * @param g             当前 Group 的数据
      */
-    protected abstract void bindGroupView(ListHolder holder, int groupPosition, boolean isExpanded, G g);
+    protected abstract void onBindGroupView(ListHolder holder, int groupPosition, boolean isExpanded, G g);
 
     /**
      * Bind the Data to the Child View. sub class must implements this method to
      * show data.
      *
-     * @param holder
-     * @param groupPosition
-     * @param childPosition
-     * @param isLastChild
-     * @param c
+     * @param holder        Item holder
+     * @param groupPosition Group 位置
+     * @param childPosition Child 位置
+     * @param isLastChild   是否最后一个 Child
+     * @param c             Child 数据
      */
-    protected abstract void bindChildView(ListHolder holder, int groupPosition, int childPosition, boolean isLastChild, C c);
+    protected abstract void onBindChildView(ListHolder holder, int groupPosition, int childPosition, boolean isLastChild, C c);
 
     @Override
     public int getGroupCount() {
@@ -203,8 +199,7 @@ public abstract class BaseExpListAdapter<G, C> extends BaseExpandableListAdapter
     @Override
     public int getChildType(int groupPosition, int childPosition) {
         if (mChildItemMultiTypeSupport != null) {
-            return mChildItemMultiTypeSupport.getChildType(groupPosition, childPosition,
-                    getChild(groupPosition, childPosition));
+            return mChildItemMultiTypeSupport.getChildType(groupPosition, childPosition, getChild(groupPosition, childPosition));
         }
         return super.getChildType(groupPosition, childPosition);
     }
@@ -338,7 +333,7 @@ public abstract class BaseExpListAdapter<G, C> extends BaseExpandableListAdapter
     public void addChild(int groupPosition, List<List<C>> children) {
         // TODO
         synchronized (mLock) {
-            mChildDataSet.addAll(mChildDataSet);
+            mChildDataSet.addAll(children);
         }
         if (mNotifyOnChange)
             notifyDataSetChanged();

@@ -115,12 +115,12 @@ public abstract class BaseListAdapter<D> extends BaseAdapter implements DataMana
     }
 
     /**
-     * @param itemViewType
-     * @param holder
-     * @param position
-     * @param data
+     * @param itemViewType Item 类型
+     * @param holder       ItemHolder
+     * @param position     当前位置
+     * @param data         当前项数据
      */
-    protected abstract void onBindViews(int itemViewType,ListHolder holder, int position, D data);
+    protected abstract void onBindViews(int itemViewType, ListHolder holder, int position, D data);
 
 
     @Override
@@ -243,7 +243,7 @@ public abstract class BaseListAdapter<D> extends BaseAdapter implements DataMana
     }
 
     @Override
-    public D getItem( int position) {
+    public D getItem(int position) {
         return mDataSet.get(position);
     }
 

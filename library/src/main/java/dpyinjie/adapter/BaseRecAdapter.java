@@ -46,7 +46,7 @@ public abstract class BaseRecAdapter<D> extends RecyclerView.Adapter<RecHolder> 
      * @param dataSet
      */
     public BaseRecAdapter(Context context, @Nullable D[] dataSet) {
-        init(context, 0, Arrays.asList(dataSet));
+        init(context, 0, dataSet == null ? null : Arrays.asList(dataSet));
     }
 
     /**
@@ -55,7 +55,7 @@ public abstract class BaseRecAdapter<D> extends RecyclerView.Adapter<RecHolder> 
      * @param itemLayoutRes
      */
     public BaseRecAdapter(Context context, @Nullable D[] dataSet, @LayoutRes int itemLayoutRes) {
-        init(context, itemLayoutRes, Arrays.asList(dataSet));
+        init(context, itemLayoutRes, dataSet == null ? null : Arrays.asList(dataSet));
     }
 
     /**
@@ -118,13 +118,13 @@ public abstract class BaseRecAdapter<D> extends RecyclerView.Adapter<RecHolder> 
         onBindViews(getItemViewType(position), holder, position, getItem(position));
     }
 
-        /**
-         * @param itemViewType
-         * @param holder
-         * @param position
-         * @param data
-         */
-        protected abstract void onBindViews(int itemViewType, RecHolder holder, int position, D data);
+    /**
+     * @param itemViewType Item 类型
+     * @param holder       Item holder
+     * @param position     当前位置
+     * @param data         当前位置的数据
+     */
+    protected abstract void onBindViews(int itemViewType, RecHolder holder, int position, D data);
 
 
     @Override
