@@ -102,19 +102,22 @@ repositories {
 }
 
 dependencies {
-    compile project(':library')
+    
+//    compile project(':library')
     compile fileTree(include: ['*.jar'], dir: 'libs')
     compile 'junit:junit:4.12'
+
+    //
     compile "com.android.support:appcompat-v7:$rootProject.supportLibraryVersion"
     compile "com.android.support:recyclerview-v7:$rootProject.supportLibraryVersion"
+    compile "com.android.support:recyclerview-v7:$rootProject.supportLibraryVersion"
+    compile "com.android.support:design:$rootProject.supportLibraryVersion"
+
+    //
     compile 'com.jakewharton:butterknife:8.4.0'
     annotationProcessor 'com.jakewharton:butterknife-compiler:8.4.0'
-    compile 'com.android.support:design:25.1.0'
 
-//    compile('com.github.dpyinjie:easy-adapter:1.1.2') {
-//        exclude group: 'com.android.support'
-//    }
-
-    compile 'com.android.support:recyclerview-v7:25.2.0'
+    //
+    compile 'com.github.dpyinjie:easy-adapter:1.1.3'
 
 }
